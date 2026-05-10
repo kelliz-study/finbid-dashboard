@@ -1,0 +1,1388 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>金融机构数字营销招投标商机清单</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+            background: #f0f2f5;
+            color: #1a1a2e;
+            line-height: 1.6;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            color: white;
+            padding: 40px 0 30px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+
+        .header h1 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .header .subtitle {
+            font-size: 14px;
+            opacity: 0.8;
+            margin-bottom: 16px;
+        }
+
+        .stats-bar {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 8px;
+            padding: 10px 18px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .stat-item .num {
+            font-size: 22px;
+            font-weight: 700;
+            color: #e94560;
+        }
+
+        .stat-item .label {
+            font-size: 12px;
+            opacity: 0.8;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 30px;
+        }
+
+        /* Filter Bar */
+        .filter-bar {
+            background: white;
+            border-radius: 12px;
+            padding: 20px 24px;
+            margin-bottom: 24px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .filter-bar label {
+            font-size: 14px;
+            font-weight: 600;
+            color: #666;
+        }
+
+        .filter-btn {
+            padding: 6px 16px;
+            border: 1px solid #e0e0e0;
+            border-radius: 20px;
+            background: white;
+            cursor: pointer;
+            font-size: 13px;
+            transition: all 0.2s;
+        }
+
+        .filter-btn:hover {
+            border-color: #0f3460;
+            color: #0f3460;
+        }
+
+        .filter-btn.active {
+            background: #0f3460;
+            color: white;
+            border-color: #0f3460;
+        }
+
+        /* Urgent Section */
+        .urgent-section {
+            background: linear-gradient(135deg, #fff5f5, #fff0f0);
+            border: 2px solid #e94560;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 24px;
+        }
+
+        .urgent-section h2 {
+            color: #e94560;
+            font-size: 18px;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .urgent-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+            gap: 16px;
+        }
+
+        .urgent-card {
+            background: white;
+            border-radius: 10px;
+            padding: 18px;
+            box-shadow: 0 2px 8px rgba(233,69,96,0.1);
+            border-left: 4px solid #e94560;
+            transition: transform 0.2s;
+        }
+
+        .urgent-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(233,69,96,0.15);
+        }
+
+        .urgent-card .deadline {
+            background: #e94560;
+            color: white;
+            padding: 2px 10px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 8px;
+        }
+
+        .urgent-card h3 {
+            font-size: 15px;
+            margin-bottom: 6px;
+            color: #1a1a2e;
+        }
+
+        .urgent-card .org {
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 8px;
+        }
+
+        .urgent-card .tags {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 500;
+        }
+
+        .tag-douyin { background: #000; color: white; }
+        .tag-xiaohongshu { background: #ff2442; color: white; }
+        .tag-shipin { background: #07c160; color: white; }
+        .tag-gongzhonghao { background: #576b95; color: white; }
+        .tag-zhibo { background: #6c5ce7; color: white; }
+        .tag-toufa { background: #f39c12; color: white; }
+        .tag-cehua { background: #00b894; color: white; }
+        .tag-sheji { background: #e17055; color: white; }
+        .tag-qiwei { background: #2d6cdf; color: white; }
+
+        /* Main Table Section */
+        .section {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 24px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .section h2 {
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section h2 .icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+        }
+
+        .icon-bank { background: #e3f2fd; }
+        .icon-insurance { background: #fce4ec; }
+        .icon-securities { background: #e8f5e9; }
+        .icon-fund { background: #fff3e0; }
+        .icon-other { background: #f3e5f5; }
+
+        .badge {
+            background: #f0f2f5;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            color: #666;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+        }
+
+        thead th {
+            background: #f8f9fa;
+            padding: 12px 14px;
+            text-align: left;
+            font-weight: 600;
+            color: #444;
+            border-bottom: 2px solid #e0e0e0;
+            white-space: nowrap;
+        }
+
+        tbody td {
+            padding: 12px 14px;
+            border-bottom: 1px solid #f0f0f0;
+            vertical-align: top;
+        }
+
+        tbody tr:hover {
+            background: #f8fbff;
+        }
+
+        .project-name {
+            font-weight: 600;
+            color: #1a1a2e;
+            max-width: 300px;
+        }
+
+        .org-name {
+            color: #0f3460;
+            font-weight: 500;
+        }
+
+        .budget {
+            color: #e94560;
+            font-weight: 700;
+        }
+
+        .link-btn {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #0f3460;
+            color: white;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 12px;
+            transition: background 0.2s;
+        }
+
+        .link-btn:hover {
+            background: #1a4a8a;
+        }
+
+        .status-badge {
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .status-active { background: #d4edda; color: #155724; }
+        .status-collect { background: #fff3cd; color: #856404; }
+        .status-ref { background: #e2e3e5; color: #383d41; }
+
+        /* Heatmap */
+        .heatmap-section {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 24px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+        }
+
+        .heatmap-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 12px;
+            margin-top: 16px;
+        }
+
+        .heat-item {
+            padding: 14px 16px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .heat-item .kw {
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .heat-item .count {
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        .heat-5 { background: #fee2e2; color: #991b1b; }
+        .heat-4 { background: #ffedd5; color: #9a3412; }
+        .heat-3 { background: #fef3c7; color: #92400e; }
+        .heat-2 { background: #ecfdf5; color: #065f46; }
+
+        /* Crawler Config */
+        .crawler-section {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 24px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+        }
+
+        .crawler-section h2 {
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+
+        .source-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        .source-item {
+            padding: 12px 16px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transition: all 0.2s;
+        }
+
+        .source-item:hover {
+            border-color: #0f3460;
+            background: #f8fbff;
+        }
+
+        .source-item .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #00b894;
+            flex-shrink: 0;
+        }
+
+        .source-item .name {
+            font-weight: 600;
+            font-size: 13px;
+        }
+
+        .source-item .url {
+            font-size: 11px;
+            color: #999;
+            word-break: break-all;
+        }
+
+        .keyword-config {
+            background: #1a1a2e;
+            border-radius: 10px;
+            padding: 20px;
+            color: #a0d8ef;
+            font-family: 'Menlo', 'Consolas', monospace;
+            font-size: 12px;
+            line-height: 1.8;
+            overflow-x: auto;
+        }
+
+        .keyword-config .comment {
+            color: #6b7280;
+        }
+
+        .keyword-config .priority {
+            color: #e94560;
+            font-weight: 700;
+        }
+
+        .keyword-config .kw {
+            color: #fbbf24;
+        }
+
+        .keyword-config .op {
+            color: #34d399;
+        }
+
+        /* Reference Table */
+        .ref-section {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 24px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+        }
+
+        .ref-section h2 {
+            margin-bottom: 16px;
+        }
+
+        .ref-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 16px;
+        }
+
+        .ref-card {
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 16px;
+        }
+
+        .ref-card .project {
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        .ref-card .winner {
+            color: #0f3460;
+            font-size: 13px;
+            margin-bottom: 4px;
+        }
+
+        .ref-card .price {
+            color: #e94560;
+            font-weight: 700;
+            font-size: 15px;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 30px;
+            color: #999;
+            font-size: 12px;
+        }
+
+        /* Action Suggestions */
+        .action-section {
+            background: linear-gradient(135deg, #f0fff4, #e6fffa);
+            border: 2px solid #00b894;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 24px;
+        }
+
+        .action-section h2 {
+            color: #00695c;
+            margin-bottom: 16px;
+        }
+
+        .action-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 12px;
+        }
+
+        .action-item {
+            background: white;
+            border-radius: 8px;
+            padding: 14px 16px;
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+        }
+
+        .action-item .priority {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: 700;
+            flex-shrink: 0;
+            color: white;
+        }
+
+        .priority-high { background: #e94560; }
+        .priority-mid { background: #f39c12; }
+        .priority-low { background: #00b894; }
+
+        .action-item .text {
+            font-size: 13px;
+        }
+
+        .action-item .text strong {
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        @media (max-width: 768px) {
+            .header-content { padding: 0 16px; }
+            .container { padding: 16px; }
+            .stats-bar { gap: 10px; }
+            .stat-item { padding: 8px 12px; }
+            .stat-item .num { font-size: 18px; }
+            .urgent-cards { grid-template-columns: 1fr; }
+            .filter-bar { padding: 14px; }
+            table { font-size: 12px; }
+            thead th, tbody td { padding: 8px 10px; }
+            .heatmap-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div class="header">
+        <div class="header-content">
+            <h1>🎯 金融机构数字营销招投标商机清单</h1>
+            <div class="subtitle">搜索时间：2026年5月11日 | 数据来源：全国公共资源交易平台 · 金融机构官方采购平台 · 行业招投标网站</div>
+            <div class="stats-bar">
+                <div class="stat-item">
+                    <span class="num">33</span>
+                    <span class="label">商机总数</span>
+                </div>
+                <div class="stat-item">
+                    <span class="num">3</span>
+                    <span class="label">本周截止</span>
+                </div>
+                <div class="stat-item">
+                    <span class="num">16</span>
+                    <span class="label">关键词命中</span>
+                </div>
+                <div class="stat-item">
+                    <span class="num">11</span>
+                    <span class="label">监控源推荐</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Filter -->
+        <div class="filter-bar">
+            <label>筛选：</label>
+            <button class="filter-btn active" onclick="filterByType('all')">全部</button>
+            <button class="filter-btn" onclick="filterByType('bank')">🏦 银行</button>
+            <button class="filter-btn" onclick="filterByType('insurance')">🛡️ 保险</button>
+            <button class="filter-btn" onclick="filterByType('securities')">📈 证券</button>
+            <button class="filter-btn" onclick="filterByType('fund')">💰 基金</button>
+            <button class="filter-btn" onclick="filterByType('other')">🏢 其他金融</button>
+        </div>
+
+        <!-- Urgent Section -->
+        <div class="urgent-section">
+            <h2>🔥 紧急跟进 — 本周内截止</h2>
+            <div class="urgent-cards">
+                <div class="urgent-card" data-type="bank">
+                    <span class="deadline">⏰ 5月9日截止</span>
+                    <h3>2026-2028年微信视频号、抖音号代运营服务采购</h3>
+                    <div class="org">广州银行股份有限公司</div>
+                    <div class="tags">
+                        <span class="tag tag-shipin">视频号</span>
+                        <span class="tag tag-douyin">抖音</span>
+                        <span class="tag tag-cehua">创意策划</span>
+                        <span class="tag tag-toufa">推流投放</span>
+                    </div>
+                    <div style="margin-top:10px;font-size:12px;color:#666;">
+                        3年期 · 1家主选+1家备选 · 项目编号 GCB-ZX67-2026-031
+                    </div>
+                    <a href="http://www.gzcb.com.cn/jrgy/xwgg/zygg/cggg/202604/t20260428_71710.html" target="_blank" class="link-btn" style="margin-top:10px;">查看公告 →</a>
+                </div>
+                <div class="urgent-card" data-type="bank">
+                    <span class="deadline">⏰ 5月12日截止</span>
+                    <h3>2026年度小红书内容制作及广告投放采购</h3>
+                    <div class="org">中国银行股份有限公司（总行）</div>
+                    <div class="tags">
+                        <span class="tag tag-xiaohongshu">小红书</span>
+                        <span class="tag tag-toufa">广告投放</span>
+                        <span class="tag tag-sheji">内容制作</span>
+                    </div>
+                    <div style="margin-top:10px;font-size:12px;color:#666;">
+                        1年期 · 总行级项目 · 企业自筹资金
+                    </div>
+                    <a href="https://www.bidnews.cn/caigou/zhaobiao-104922806.html" target="_blank" class="link-btn" style="margin-top:10px;">查看公告 →</a>
+                </div>
+                <div class="urgent-card" data-type="securities">
+                    <span class="deadline">⏰ 5月12日截止</span>
+                    <h3>长城证券"长城炼金术"2026年定制运营活动服务</h3>
+                    <div class="org">长城证券股份有限公司</div>
+                    <div class="tags">
+                        <span class="tag tag-cehua">活动策划</span>
+                        <span class="tag tag-toufa">推广计划</span>
+                    </div>
+                    <div style="margin-top:10px;font-size:12px;color:#666;">
+                        1年期 · 线上营销活动 · 需APP/小程序运营案例
+                    </div>
+                    <a href="https://www.bidnews.cn/caigou/zhaobiao-105128152.html" target="_blank" class="link-btn" style="margin-top:10px;">查看公告 →</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bank Section -->
+        <div class="section" data-type="bank">
+            <div class="section-header">
+                <h2><span class="icon icon-bank">🏦</span> 银行类商机</h2>
+                <span class="badge">12个项目</span>
+            </div>
+            <div style="overflow-x:auto;">
+            <table>
+                <thead>
+                    <tr>
+                        <th>项目名称</th>
+                        <th>招标人</th>
+                        <th>关键词匹配</th>
+                        <th>预算/规模</th>
+                        <th>状态</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="project-name">2026-2028年微信视频号、抖音号代运营服务</td>
+                        <td class="org-name">广州银行</td>
+                        <td>
+                            <span class="tag tag-shipin">视频号</span>
+                            <span class="tag tag-douyin">抖音</span>
+                            <span class="tag tag-cehua">创意策划</span>
+                        </td>
+                        <td>3年期,1+1供应商</td>
+                        <td><span class="status-badge status-active">正在招标</span></td>
+                        <td><a href="http://www.gzcb.com.cn/jrgy/xwgg/zygg/cggg/202604/t20260428_71710.html" target="_blank" class="link-btn">查看</a></td>
+                    </tr>
+                    <tr>
+                        <td class="project-name">2026年度小红书内容制作及广告投放</td>
+                        <td class="org-name">中国银行(总行)</td>
+                        <td>
+                            <span class="tag tag-xiaohongshu">小红书</span>
+                            <span class="tag tag-toufa">广告投放</span>
+                        </td>
+                        <td>1年期</td>
+                        <td><span class="status-badge status-active">正在招标</span></td>
+                        <td><a href="https://www.bidnews.cn/caigou/zhaobiao-104922806.html" target="_blank" class="link-btn">查看</a></td>
+                    </tr>
+                    <tr>
+                        <td class="project-name">2026年专业小红书制作运营服务采购</td>
+                        <td class="org-name">杭州银行</td>
+                        <td>
+                            <span class="tag tag-xiaohongshu">小红书</span>
+                            <span class="tag tag-sheji">图文/视频</span>
+                            <span class="tag tag-toufa">流量投放</span>
+                        </td>
+                        <td>1年期</td>
+                        <td><span class="status-badge status-active">正在招标</span></td>
+                        <td><a href="https://www.zszbcg.cn/class1/524102.html" target="_blank" class="link-btn">查看</a></td>
+                    </tr>
+                    <tr>
+                        <td class="project-name">2026年总行微信公众号代运营服务</td>
+                        <td class="org-name">青岛农商银行</td>
+                        <td>
+                            <span class="tag tag-gongzhonghao">公众号</span>
+                        </td>
+                        <td>谈判采购</td>
+                        <td><span class="status-badge status-active">正在招标</span></td>
+                        <td><a href="https://ggzy.qingdao.gov.cn/PortalQDManage/PortalQD/ZtbShowGY/28927?flag=0" target="_blank" class="link-btn">查看</a></td>
+                    </tr>
+                    <tr>
+                        <td class="project-name">2026-2028年宣传设计服务采购</td>
+                        <td class="org-name">邮储银行(总行)</td>
+                        <td>
+                            <span class="tag tag-cehua">品牌策略</span>
+                            <span class="tag tag-sheji">视觉设计</span>
+                            <span class="tag tag-douyin">视频制作</span>
+                        </td>
+                        <td class="budget">大型项目</td>
+                        <td><span class="status-badge status-active">正在招标</span></td>
+                        <td><a href="https://www.chinapost.com.cn/xhtml1/report/2602/1741-1.htm" target="_blank" class="link-btn">查看</a></td>
+                    </tr>
+                    <tr>
+                        <td class="project-name">2026-2027年营销策划服务采购</td>
+                        <td class="org-name">邮储银行天津分行</td>
+                        <td>
+                            <span class="tag tag-cehua">营销策划</span>
+                            <span class="tag tag-sheji">设计制作</span>
+                            <span class="tag tag-douyin">视频拍摄</span>
+                        </td>
+                        <td class="budget">1600万元</td>
+                        <td><span class="status-badge status-active">正在招标</span></td>
+                        <td><a href="https://www.chinapost.com.cn/html1/report/2512/5834-1.htm" target="_blank" class="link-btn">查看</a></td>
+                    </tr>
+                    <tr>
+                        <td class="project-name">2026年线上新媒体运营项目</td>
+                        <td class="org-name">兴业银行南京分行</td>
+                        <td>
+                            <span class="tag tag-douyin">短视频≥100条</span>
+                            <span class="tag tag-zhibo">直播≥250场</span>
+                        </td>
+                        <td>体量大(视频+直播)</td>
+                        <td><span class="status-badge status-collect">征集中</span></td>
+                        <td><a href="https://cg.cib.com.cn/cms/default/webfile/gyszj/20260409/1226949697248165888.html" target="_blank" class="link-btn">查看</a></td>
+                    </tr>
+                    <tr>
+                        <td class="project-name">零售企业微信运营服务项目</td>
+                        <td class="org-name">兴业银行(总行)</td>
+                        <td>
+                            <span class="tag tag-qiwei">企业微信</span>
+                            <span class="tag tag-cehua">营销方案</span>
+                            <span class="tag tag-douyin">视频制作</span>
+                        </td>
+                        <td>总行级项目</td>
+                        <td><span class="status-badge status-collect">征集中</span></td>
+                        <td><a href="https://fujian.jianyu360.cn/jybx/20260411_26041045797127.html" target="_blank" class="link-btn">查看</a></td>
+                    </tr>
+                    <tr>
+                        <td class="project-name">2026年度微信公众号、视频号宣传运营</td>
+                        <td class="org-name">兴业银行西安分行</td>
+                        <td>
+                            <span class="tag tag-gongzhonghao">公众号</span>
+                            <span class="tag tag-shipin">视频号</span>
+                            <span class="tag tag-cehua">节点策划</span>
+                        </td>
+                        <td>144篇图文+60篇长图/年</td>
+                        <td><span class="status-badge status-collect">征集中</span></td>
+                        <td><a href="https://cg.cib.com.cn/cms/default/webfile/gyszj/20251128/1179004210830639104.html" target="_blank" class="link-btn">查看</a></td>
+                    </tr>
+                    <tr>
+                        <td class="project-name">2025-2026年度零售金融新媒体矩阵建设</td>
+                        <td class="org-name">浦发银行(总行)</td>
+                        <td>
+                            <span class="tag tag-douyin">抖音</span>
+                            <span class="tag tag-xiaohongshu">小红书</span>
+                            <span class="tag tag-cehua">KOL/KOC</span>
+                        </td>
+                        <td>多平台矩阵</td>
+                        <td><span class="status-badge status-collect">征集中</span></td>
+                        <td><a href="https://m.zhaobiao.cn/rlzb/bidding_v_eb7be5589abc006f658e150ad1655a69.html" target="_blank" class="link-btn">查看</a></td>
+                    </tr>
+                    <tr>
+                        <td class="project-name">小红书渠道合作服务供应商采购</td>
+                        <td class="org-name">上海银行</td>
+                        <td>
+                            <span class="tag tag-xiaohongshu">小红书</span>
+                            <span class="tag tag-toufa">信息流/搜索</span>
+                        </td>
+                        <td class="budget">3年/上限200万</td>
+                        <td><span class="status-badge status-collect">征集中</span></td>
+                        <td><a href="https://www.chinamae.com/purchases/5925108e75c0a4303fb2c30906285643.html" target="_blank" class="link-btn">查看</a></td>
+                    </tr>
+                    <tr>
+                        <td class="project-name">线上渠道公众平台宣传策划服务</td>
+                        <td class="org-name">邮储银行山西分行</td>
+                        <td>
+                            <span class="tag tag-gongzhonghao">公众号</span>
+                            <span class="tag tag-shipin">视频号</span>
+                            <span class="tag tag-sheji">海报图片</span>
+                        </td>
+                        <td class="budget">100万元/2年</td>
+                        <td><span class="status-badge status-active">正在招标</span></td>
+                        <td><a href="https://www.chinapost.com.cn/xhtml1/report/2511/6788-1.htm" target="_blank" class="link-btn">查看</a></td>
+                    </tr>
+                </tbody>
+            </table>
+            </div>
+        </div>
+
+        <!-- Insurance Section -->
+        <div class="section" data-type="insurance">
+            <div class="section-header">
+                <h2><span class="icon icon-insurance">🛡️</span> 保险类商机</h2>
+                <span class="badge">5个项目</span>
+            </div>
+            <div style="overflow-x:auto;">
+            <table>
+                <thead>
+                    <tr>
+                        <th>项目名称</th>
+                        <th>招标人</th>
+                        <th>关键词匹配</th>
+                        <th>预算/规模</th>
+                        <th>状态</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="project-name">新媒体运营抖音第三方服务项目</td>
+                        <td class="org-name">人保财险江苏省分公司</td>
+                        <td>
+                            <span class="tag tag-douyin">抖音</span>
+                            <span class="tag tag-zhibo">直播</span>
+                            <span class="tag tag-toufa">投放</span>
+                        </td>
+                        <td>1年期</td>
+                        <td><span class="status-badge status-active">正在招标</span></td>
+                        <td><a href="https://ec.picc.com/cms/default/webfile/4ywgg1/20251225/1188760365488406528.html" target="_blank" class="link-btn">查看</a></td>
+                    </tr>
+                    <tr>
+                        <td class="project-name">自媒体平台车险营销服务项目</td>
+                        <td class="org-name">人保财险天津滨海支公司</td>
+                        <td>
+                            <span class="tag tag-douyin">抖音</span>
+                            <span class="tag tag-cehua">营销全链路</span>
+                        </td>
+                        <td>3个月期</td>
+                        <td><span class="status-badge status-active">正在招标</span></td>
+                        <td><a href="https://ec.picc.com/cms/default/webfile/4ywgg1/20251114/1174031988177240064.html" target="_blank" class="link-btn">查看</a></td>
+                    </tr>
+                    <tr>
+                        <td class="project-name">2026-2028年宣传设计类服务入围</td>
+                        <td class="org-name">中邮保险</td>
+                        <td>
+                            <span class="tag tag-sheji">营销包装设计</span>
+                            <span class="tag tag-douyin">视频</span>
+                        </td>
+                        <td class="budget">上限1064万/2年</td>
+                        <td><span class="status-badge status-active">正在招标</span></td>
+                        <td><a href="https://www.chinapost.com.cn/xhtml1/report/2603/7392-1.htm" target="_blank" class="link-btn">查看</a></td>
+                    </tr>
+                    <tr>
+                        <td class="project-name">自营互联网平台线上运营服务</td>
+                        <td class="org-name">中邮保险</td>
+                        <td>
+                            <span class="tag tag-shipin">视频号运营</span>
+                            <span class="tag tag-cehua">活动策划</span>
+                            <span class="tag tag-gongzhonghao">服务号</span>
+                        </td>
+                        <td>需金融总部案例</td>
+                        <td><span class="status-badge status-active">正在招标</span></td>
+                        <td><a href="http://www.ctvpost.com/html1/report/26018/6619-1.htm" target="_blank" class="link-btn">查看</a></td>
+                    </tr>
+                    <tr>
+                        <td class="project-name">2026-2027年度微信公众号运维服务</td>
+                        <td class="org-name">太平资产</td>
+                        <td>
+                            <span class="tag tag-gongzhonghao">公众号</span>
+                            <span class="tag tag-sheji">长图/海报</span>
+                            <span class="tag tag-douyin">短视频</span>
+                        </td>
+                        <td>需金融全案案例≥30万</td>
+                        <td><span class="status-badge status-active">正在招标</span></td>
+                        <td><a href="https://www.zsztb.cn/class3/264012.html" target="_blank" class="link-btn">查看</a></td>
+                    </tr>
+                </tbody>
+            </table>
+            </div>
+        </div>
+
+        <!-- Securities Section -->
+        <div class="section" data-type="securities">
+            <div class="section-header">
+                <h2><span class="icon icon-securities">📈</span> 证券类商机</h2>
+                <span class="badge">3个项目</span>
+            </div>
+            <div style="overflow-x:auto;">
+            <table>
+                <thead>
+                    <tr>
+                        <th>项目名称</th>
+                        <th>招标人</th>
+                        <th>关键词匹配</th>
+                        <th>预算/规模</th>
+                        <th>状态</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="project-name">2026年度新媒体渠道推广项目（4个标包）</td>
+                        <td class="org-name">长江证券</td>
+                        <td>
+                            <span class="tag tag-douyin">抖音</span>
+                            <span class="tag tag-shipin">视频号</span>
+                            <span class="tag tag-xiaohongshu">小红书</span>
+                        </td>
+                        <td>各标包入围3家</td>
+                        <td><span class="status-badge status-active">正在招标</span></td>
+                        <td><a href="http://www.hbbidding.com.cn/view/22921.html" target="_blank" class="link-btn">查看</a></td>
+                    </tr>
+                    <tr>
+                        <td class="project-name">2025年信息流广告投放代理服务</td>
+                        <td class="org-name">东北证券</td>
+                        <td>
+                            <span class="tag tag-douyin">巨量千川</span>
+                            <span class="tag tag-xiaohongshu">小红书商业化</span>
+                            <span class="tag tag-toufa">一级代理</span>
+                        </td>
+                        <td>需持牌金融合同</td>
+                        <td><span class="status-badge status-active">正在招标</span></td>
+                        <td><a href="http://www.yfbzb.com/inviteBid/detail/20251010_543518366.html" target="_blank" class="link-btn">查看</a></td>
+                    </tr>
+                    <tr>
+                        <td class="project-name">"长城炼金术"2026年定制运营活动服务</td>
+                        <td class="org-name">长城证券</td>
+                        <td>
+                            <span class="tag tag-cehua">活动策划</span>
+                            <span class="tag tag-toufa">推广</span>
+                        </td>
+                        <td>1年期</td>
+                        <td><span class="status-badge status-active">正在招标</span></td>
+                        <td><a href="https://www.bidnews.cn/caigou/zhaobiao-105128152.html" target="_blank" class="link-btn">查看</a></td>
+                    </tr>
+                </tbody>
+            </table>
+            </div>
+        </div>
+
+        <!-- Fund Section -->
+        <div class="section" data-type="fund">
+            <div class="section-header">
+                <h2><span class="icon icon-fund">💰</span> 基金类商机</h2>
+                <span class="badge">4个项目</span>
+            </div>
+            <div style="overflow-x:auto;">
+            <table>
+                <thead>
+                    <tr>
+                        <th>项目名称</th>
+                        <th>招标人</th>
+                        <th>关键词匹配</th>
+                        <th>预算/规模</th>
+                        <th>状态</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="project-name">视频与平台推广服务采购</td>
+                        <td class="org-name">万家基金</td>
+                        <td>
+                            <span class="tag tag-douyin">视频矩阵</span>
+                            <span class="tag tag-cehua">精准推广</span>
+                        </td>
+                        <td>1家中标</td>
+                        <td><span class="status-badge status-active">正在招标</span></td>
+                        <td><a href="http://linyi.ygcgfw.com/gggs/001001/001001001/20260202/98561ea8-aac3-4659-b0d1-e591da47bfb7.html" target="_blank" class="link-btn">查看</a></td>
+                    </tr>
+                    <tr>
+                        <td class="project-name">2026年新媒体服务项目</td>
+                        <td class="org-name">万家基金</td>
+                        <td>
+                            <span class="tag tag-gongzhonghao">自媒体运营</span>
+                            <span class="tag tag-zhibo">直播</span>
+                            <span class="tag tag-toufa">投放</span>
+                        </td>
+                        <td>1年期</td>
+                        <td><span class="status-badge status-active">正在招标</span></td>
+                        <td><a href="http://yantai.ygcgfw.com/gggs/001001/001001001/20251209/2c6b7c1b-a85e-400e-9bfe-dd1e4ec8d970.html" target="_blank" class="link-btn">查看</a></td>
+                    </tr>
+                    <tr>
+                        <td class="project-name">2026-2027 ETF和主动权益基金多媒介推广</td>
+                        <td class="org-name">华富基金</td>
+                        <td>
+                            <span class="tag tag-douyin">视频分发</span>
+                            <span class="tag tag-cehua">社区运营</span>
+                        </td>
+                        <td>2标包/2年期</td>
+                        <td><span class="status-badge status-active">正在招标</span></td>
+                        <td><a href="http://www.ahtba.org.cn/site/trade/affiche/detail/4d9da1fa-f7f4-11f0-b7f6-00163e1f3e9b" target="_blank" class="link-btn">查看</a></td>
+                    </tr>
+                    <tr>
+                        <td class="project-name">2026年腾讯理财通营销推广</td>
+                        <td class="org-name">兴业基金</td>
+                        <td>
+                            <span class="tag tag-cehua">互联网营销</span>
+                            <span class="tag tag-toufa">品牌曝光</span>
+                        </td>
+                        <td>需20家银行案例</td>
+                        <td><span class="status-badge status-collect">征集中</span></td>
+                        <td><a href="http://www.caizhaowang.com/news-1-53e5aeb26f3b5cd97011b49b41813924bf10392dc5deaee9.html" target="_blank" class="link-btn">查看</a></td>
+                    </tr>
+                </tbody>
+            </table>
+            </div>
+        </div>
+
+        <!-- Other Financial Section -->
+        <div class="section" data-type="other">
+            <div class="section-header">
+                <h2><span class="icon icon-other">🏢</span> 其他金融机构商机</h2>
+                <span class="badge">5个项目</span>
+            </div>
+            <div style="overflow-x:auto;">
+            <table>
+                <thead>
+                    <tr>
+                        <th>项目名称</th>
+                        <th>招标人</th>
+                        <th>关键词匹配</th>
+                        <th>预算/规模</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="project-name">2025年分公司互联网广告投放服务</td>
+                        <td class="org-name">中国出口信用保险(河北)</td>
+                        <td>
+                            <span class="tag tag-douyin">抖音</span>
+                            <span class="tag tag-toufa">信息流广告</span>
+                        </td>
+                        <td>大数据定向投放</td>
+                        <td><a href="https://eps.sinosure.com.cn/cms/channel/xmgg1/905188.htm" target="_blank" class="link-btn">查看</a></td>
+                    </tr>
+                    <tr>
+                        <td class="project-name">2025年快手渠道信息流广告投放</td>
+                        <td class="org-name">马上消费金融</td>
+                        <td>
+                            <span class="tag tag-toufa">信息流投放</span>
+                        </td>
+                        <td>最多8家中标</td>
+                        <td><a href="https://www.zbytb.com/s-zb-55577084.html" target="_blank" class="link-btn">查看</a></td>
+                    </tr>
+                    <tr>
+                        <td class="project-name">媒介资源广告投放(抖音+头条+朋友圈)</td>
+                        <td class="org-name">邮储银行北京分行</td>
+                        <td>
+                            <span class="tag tag-douyin">抖音</span>
+                            <span class="tag tag-toufa">信息流曝光600万次</span>
+                        </td>
+                        <td>多包件</td>
+                        <td><a href="https://m.bidnews.cn/caigou/zhaobiao-100232552.html" target="_blank" class="link-btn">查看</a></td>
+                    </tr>
+                    <tr>
+                        <td class="project-name">个人掌银"公域引流"线上营销服务</td>
+                        <td class="org-name">农业银行青海分行</td>
+                        <td>
+                            <span class="tag tag-douyin">字节系</span>
+                            <span class="tag tag-toufa">效果广告</span>
+                            <span class="tag tag-cehua">营销规划</span>
+                        </td>
+                        <td>21.6万元</td>
+                        <td><a href="http://qhggzyjy.gov.cn/xin/jyxx/001002/001002001/20250815/af72b1f4-19c5-4026-b1b0-74fad4bc169a.html" target="_blank" class="link-btn">查看</a></td>
+                    </tr>
+                    <tr>
+                        <td class="project-name">微金融服务号及企业微信开发运营维护</td>
+                        <td class="org-name">中国邮政福建分公司</td>
+                        <td>
+                            <span class="tag tag-qiwei">企业微信</span>
+                            <span class="tag tag-gongzhonghao">服务号</span>
+                        </td>
+                        <td>第一年190万/两年</td>
+                        <td><a href="http://www.ctvpost.com/html1/report/2512/6111-1.htm" target="_blank" class="link-btn">查看</a></td>
+                    </tr>
+                </tbody>
+            </table>
+            </div>
+        </div>
+
+        <!-- Heatmap Section -->
+        <div class="heatmap-section">
+            <h2>📊 关键词命中热力图</h2>
+            <div class="heatmap-grid">
+                <div class="heat-item heat-5">
+                    <span class="kw">抖音/短视频</span>
+                    <span class="count">18</span>
+                </div>
+                <div class="heat-item heat-5">
+                    <span class="kw">视频号</span>
+                    <span class="count">12</span>
+                </div>
+                <div class="heat-item heat-4">
+                    <span class="kw">公众号代运营</span>
+                    <span class="count">10</span>
+                </div>
+                <div class="heat-item heat-4">
+                    <span class="kw">视频拍摄制作</span>
+                    <span class="count">9</span>
+                </div>
+                <div class="heat-item heat-4">
+                    <span class="kw">小红书/内容种草</span>
+                    <span class="count">8</span>
+                </div>
+                <div class="heat-item heat-4">
+                    <span class="kw">视觉设计/海报</span>
+                    <span class="count">8</span>
+                </div>
+                <div class="heat-item heat-3">
+                    <span class="kw">信息流/广告投放</span>
+                    <span class="count">7</span>
+                </div>
+                <div class="heat-item heat-3">
+                    <span class="kw">直播运营</span>
+                    <span class="count">6</span>
+                </div>
+                <div class="heat-item heat-3">
+                    <span class="kw">营销策划/活动全案</span>
+                    <span class="count">6</span>
+                </div>
+                <div class="heat-item heat-2">
+                    <span class="kw">企业微信</span>
+                    <span class="count">4</span>
+                </div>
+                <div class="heat-item heat-2">
+                    <span class="kw">品牌种草/KOL</span>
+                    <span class="count">3</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Reference Section -->
+        <div class="ref-section">
+            <h2>💡 中标参考（报价水平）</h2>
+            <div class="ref-cards">
+                <div class="ref-card">
+                    <div class="project">人保财险湖北省分公司 — 抖音号运营</div>
+                    <div class="winner">中标人：杭州易有料科技有限公司</div>
+                    <div class="price">
+                        口播视频 3,498元/次 · 精品短视频 12,720元/次<br>
+                        精品长视频 21,200元/次 · 动画视频 8,480元/次<br>
+                        品牌宣传视频 26,500元/次 · 月运营费 9,540元/月
+                    </div>
+                </div>
+                <div class="ref-card">
+                    <div class="project">人保财险湖北省分公司 — 抖音号运营（备选）</div>
+                    <div class="winner">备选人：湖北楚天都市报传媒</div>
+                    <div class="price">
+                        口播视频 5,000元/次 · 精品短视频 15,000元/次<br>
+                        精品长视频 20,000元/次 · 动画视频 15,000元/次<br>
+                        品牌宣传视频 28,000元/次 · 月运营费 10,000元/月
+                    </div>
+                </div>
+                <div class="ref-card">
+                    <div class="project">中信银行 — 文化类新媒体传播合作</div>
+                    <div class="winner">第1名：北京敦和国际影视传媒</div>
+                    <div class="price">62.3万元（抖音+视频号+小红书 × 7期节日短视频）</div>
+                </div>
+                <div class="ref-card">
+                    <div class="project">贵州银行安顺分行 — 线上营销服务</div>
+                    <div class="winner">中标人：北京姬发科技</div>
+                    <div class="price">费率 7%</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Action Section -->
+        <div class="action-section">
+            <h2>✅ 快速行动建议</h2>
+            <div class="action-list">
+                <div class="action-item">
+                    <span class="priority priority-high">1</span>
+                    <div class="text">
+                        <strong>广州银行视频号/抖音代运营（已截止，关注后续）</strong>
+                        3年大单，关注是否重新招标或备选补入机会
+                    </div>
+                </div>
+                <div class="action-item">
+                    <span class="priority priority-high">2</span>
+                    <div class="text">
+                        <strong>中国银行小红书内容制作及广告投放（5/12截止）</strong>
+                        总行级项目，今天必须完成投标文件提交
+                    </div>
+                </div>
+                <div class="action-item">
+                    <span class="priority priority-high">3</span>
+                    <div class="text">
+                        <strong>长城证券定制运营活动服务（5/12截止）</strong>
+                        准备APP/小程序线上运营案例材料
+                    </div>
+                </div>
+                <div class="action-item">
+                    <span class="priority priority-mid">4</span>
+                    <div class="text">
+                        <strong>注册兴业银行采购平台，关注征集公告</strong>
+                        南京分行(100条视频+250场直播)+总行企微运营，体量巨大
+                    </div>
+                </div>
+                <div class="action-item">
+                    <span class="priority priority-mid">5</span>
+                    <div class="text">
+                        <strong>邮储银行体系集中跟进</strong>
+                        总行宣传设计+天津分行1600万营销策划+山西分行100万，多点布局
+                    </div>
+                </div>
+                <div class="action-item">
+                    <span class="priority priority-low">6</span>
+                    <div class="text">
+                        <strong>储备金融行业案例与资质</strong>
+                        多数项目要求：持牌金融机构合同(30万+)、8类岗位团队、一级代理资质
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Crawler Config Section -->
+        <div class="crawler-section">
+            <h2>🤖 龙虾系统爬虫配置建议</h2>
+            
+            <h3 style="font-size:15px;margin-bottom:12px;color:#444;">推荐监控信息源</h3>
+            <div class="source-grid">
+                <div class="source-item">
+                    <span class="dot"></span>
+                    <div>
+                        <div class="name">人保集团e采平台</div>
+                        <div class="url">https://ec.picc.com</div>
+                    </div>
+                </div>
+                <div class="source-item">
+                    <span class="dot"></span>
+                    <div>
+                        <div class="name">兴业银行采购平台</div>
+                        <div class="url">https://cg.cib.com.cn</div>
+                    </div>
+                </div>
+                <div class="source-item">
+                    <span class="dot"></span>
+                    <div>
+                        <div class="name">中国邮政/邮储银行采购</div>
+                        <div class="url">https://www.chinapost.com.cn</div>
+                    </div>
+                </div>
+                <div class="source-item">
+                    <span class="dot"></span>
+                    <div>
+                        <div class="name">中信银行采购平台</div>
+                        <div class="url">https://ebid.cfhc.citic</div>
+                    </div>
+                </div>
+                <div class="source-item">
+                    <span class="dot"></span>
+                    <div>
+                        <div class="name">中国建设银行采购</div>
+                        <div class="url">https://www.bidding.citic</div>
+                    </div>
+                </div>
+                <div class="source-item">
+                    <span class="dot"></span>
+                    <div>
+                        <div class="name">全国公共资源交易平台</div>
+                        <div class="url">http://www.ggzy.gov.cn</div>
+                    </div>
+                </div>
+                <div class="source-item">
+                    <span class="dot"></span>
+                    <div>
+                        <div class="name">招标与采购网</div>
+                        <div class="url">http://www.zbtb.com.cn</div>
+                    </div>
+                </div>
+                <div class="source-item">
+                    <span class="dot"></span>
+                    <div>
+                        <div class="name">中国招标投标公共服务平台</div>
+                        <div class="url">http://www.cebpubservice.com</div>
+                    </div>
+                </div>
+                <div class="source-item">
+                    <span class="dot"></span>
+                    <div>
+                        <div class="name">中国出口信用保险采购</div>
+                        <div class="url">https://eps.sinosure.com.cn</div>
+                    </div>
+                </div>
+                <div class="source-item">
+                    <span class="dot"></span>
+                    <div>
+                        <div class="name">必联网</div>
+                        <div class="url">http://www.ebnew.com</div>
+                    </div>
+                </div>
+                <div class="source-item">
+                    <span class="dot"></span>
+                    <div>
+                        <div class="name">各省政府采购网(ccgp)</div>
+                        <div class="url">各省级ccgp子站</div>
+                    </div>
+                </div>
+            </div>
+
+            <h3 style="font-size:15px;margin:20px 0 12px;color:#444;">精准关键词配置（4级优先级）</h3>
+            <div class="keyword-config">
+                <div><span class="comment">## 第一优先级 — 完全匹配业务核心</span></div>
+                <div><span class="priority">P1:</span> <span class="kw">"新媒体"</span> <span class="op">AND</span> (<span class="kw">"银行"</span> <span class="op">OR</span> <span class="kw">"保险"</span> <span class="op">OR</span> <span class="kw">"证券"</span> <span class="op">OR</span> <span class="kw">"基金"</span>)</div>
+                <div><span class="priority">P1:</span> <span class="kw">"代运营"</span> <span class="op">AND</span> (<span class="kw">"银行"</span> <span class="op">OR</span> <span class="kw">"保险"</span> <span class="op">OR</span> <span class="kw">"证券"</span> <span class="op">OR</span> <span class="kw">"基金"</span>)</div>
+                <div><span class="priority">P1:</span> <span class="kw">"抖音"</span> <span class="op">AND</span> (<span class="kw">"银行"</span> <span class="op">OR</span> <span class="kw">"保险"</span> <span class="op">OR</span> <span class="kw">"金融"</span>)</div>
+                <div><span class="priority">P1:</span> <span class="kw">"小红书"</span> <span class="op">AND</span> (<span class="kw">"银行"</span> <span class="op">OR</span> <span class="kw">"保险"</span> <span class="op">OR</span> <span class="kw">"金融"</span>)</div>
+                <div><span class="priority">P1:</span> <span class="kw">"视频号"</span> <span class="op">AND</span> (<span class="kw">"银行"</span> <span class="op">OR</span> <span class="kw">"保险"</span> <span class="op">OR</span> <span class="kw">"金融"</span>)</div>
+                <div><span class="priority">P1:</span> <span class="kw">"短视频"</span> <span class="op">AND</span> (<span class="kw">"银行"</span> <span class="op">OR</span> <span class="kw">"保险"</span> <span class="op">OR</span> <span class="kw">"金融"</span>) <span class="op">AND</span> <span class="kw">"招标"</span></div>
+                <div><span class="priority">P1:</span> <span class="kw">"直播运营"</span> <span class="op">AND</span> (<span class="kw">"银行"</span> <span class="op">OR</span> <span class="kw">"保险"</span> <span class="op">OR</span> <span class="kw">"金融"</span>)</div>
+                <br>
+                <div><span class="comment">## 第二优先级 — 品牌营销类</span></div>
+                <div><span class="priority">P2:</span> <span class="kw">"品牌宣传"</span> <span class="op">AND</span> (<span class="kw">"银行"</span> <span class="op">OR</span> <span class="kw">"保险"</span> <span class="op">OR</span> <span class="kw">"证券"</span> <span class="op">OR</span> <span class="kw">"基金"</span>)</div>
+                <div><span class="priority">P2:</span> <span class="kw">"营销策划"</span> <span class="op">AND</span> (<span class="kw">"银行"</span> <span class="op">OR</span> <span class="kw">"保险"</span> <span class="op">OR</span> <span class="kw">"证券"</span> <span class="op">OR</span> <span class="kw">"基金"</span>)</div>
+                <div><span class="priority">P2:</span> <span class="kw">"活动策划"</span> <span class="op">AND</span> (<span class="kw">"银行"</span> <span class="op">OR</span> <span class="kw">"保险"</span> <span class="op">OR</span> <span class="kw">"金融"</span>)</div>
+                <div><span class="priority">P2:</span> <span class="kw">"视觉设计"</span> <span class="op">AND</span> (<span class="kw">"银行"</span> <span class="op">OR</span> <span class="kw">"保险"</span> <span class="op">OR</span> <span class="kw">"金融"</span>)</div>
+                <div><span class="priority">P2:</span> <span class="kw">"宣传设计"</span> <span class="op">AND</span> (<span class="kw">"银行"</span> <span class="op">OR</span> <span class="kw">"保险"</span> <span class="op">OR</span> <span class="kw">"金融"</span>)</div>
+                <br>
+                <div><span class="comment">## 第三优先级 — 信息流投放类</span></div>
+                <div><span class="priority">P3:</span> <span class="kw">"信息流"</span> <span class="op">AND</span> (<span class="kw">"银行"</span> <span class="op">OR</span> <span class="kw">"保险"</span> <span class="op">OR</span> <span class="kw">"证券"</span> <span class="op">OR</span> <span class="kw">"金融"</span>)</div>
+                <div><span class="priority">P3:</span> <span class="kw">"广告投放"</span> <span class="op">AND</span> (<span class="kw">"银行"</span> <span class="op">OR</span> <span class="kw">"保险"</span> <span class="op">OR</span> <span class="kw">"证券"</span> <span class="op">OR</span> <span class="kw">"金融"</span>)</div>
+                <div><span class="priority">P3:</span> <span class="kw">"巨量千川"</span> <span class="op">AND</span> <span class="kw">"金融"</span></div>
+                <div><span class="priority">P3:</span> <span class="kw">"朋友圈广告"</span> <span class="op">AND</span> (<span class="kw">"银行"</span> <span class="op">OR</span> <span class="kw">"保险"</span>)</div>
+                <br>
+                <div><span class="comment">## 第四优先级 — 平台运营类</span></div>
+                <div><span class="priority">P4:</span> <span class="kw">"企业微信"</span> <span class="op">AND</span> (<span class="kw">"银行"</span> <span class="op">OR</span> <span class="kw">"保险"</span>) <span class="op">AND</span> (<span class="kw">"运营"</span> <span class="op">OR</span> <span class="kw">"开发"</span>)</div>
+                <div><span class="priority">P4:</span> <span class="kw">"公众号"</span> <span class="op">AND</span> (<span class="kw">"银行"</span> <span class="op">OR</span> <span class="kw">"保险"</span> <span class="op">OR</span> <span class="kw">"证券"</span> <span class="op">OR</span> <span class="kw">"基金"</span>) <span class="op">AND</span> (<span class="kw">"运营"</span> <span class="op">OR</span> <span class="kw">"代运营"</span>)</div>
+                <div><span class="priority">P4:</span> <span class="kw">"内容种草"</span> <span class="op">AND</span> <span class="kw">"金融"</span></div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p>本清单基于公开网络信息整理，建议以各平台官方最新公告为准</p>
+            <p>生成时间：2026年5月11日 00:10 | 数据仅供参考</p>
+        </div>
+    </div>
+
+    <script>
+        function filterByType(type) {
+            // Update button states
+            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            // Filter sections
+            const sections = document.querySelectorAll('.section[data-type]');
+            const urgentCards = document.querySelectorAll('.urgent-card[data-type]');
+
+            if (type === 'all') {
+                sections.forEach(s => s.style.display = 'block');
+                urgentCards.forEach(c => c.style.display = 'block');
+                document.querySelector('.urgent-section').style.display = 'block';
+            } else {
+                sections.forEach(s => {
+                    s.style.display = s.dataset.type === type ? 'block' : 'none';
+                });
+                
+                let hasUrgent = false;
+                urgentCards.forEach(c => {
+                    if (c.dataset.type === type) {
+                        c.style.display = 'block';
+                        hasUrgent = true;
+                    } else {
+                        c.style.display = 'none';
+                    }
+                });
+                document.querySelector('.urgent-section').style.display = hasUrgent ? 'block' : 'none';
+            }
+        }
+    </script>
+</body>
+</html>
