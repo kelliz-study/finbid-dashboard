@@ -546,6 +546,11 @@
             margin-bottom: 4px;
         }
 
+        /* 台账模块样式 */
+        #ledger-section { scroll-margin-top: 120px; }
+        #ledger-table tbody tr:hover { background: #e8f4ff !important; }
+        #renewal-alerts-section { scroll-margin-top: 120px; }
+
         @media (max-width: 768px) {
             .header-content { padding: 0 16px; }
             .container { padding: 16px; }
@@ -1345,14 +1350,251 @@
             </div>
         </div>
 
+        <!-- ==================== 商机台账模块 ==================== -->
+        <div class="section" id="ledger-section" style="border: 2px solid #0f3460;">
+            <div class="section-header">
+                <h2><span class="icon" style="background:#e3f2fd;">📋</span> 存量客户招投标商机台账</h2>
+                <div style="display:flex;gap:8px;align-items:center;">
+                    <span class="badge" style="background:#d4edda;color:#155724;">存量续签 9个</span>
+                    <span class="badge" style="background:#fff3cd;color:#856404;">新增专项 3个</span>
+                    <button onclick="exportLedger()" style="padding:6px 14px;background:#0f3460;color:white;border:none;border-radius:6px;cursor:pointer;font-size:12px;">导出Excel</button>
+                </div>
+            </div>
+            <div style="overflow-x:auto;">
+            <table id="ledger-table">
+                <thead>
+                    <tr>
+                        <th>序号</th>
+                        <th>商机类型</th>
+                        <th>机构分类</th>
+                        <th>招标人</th>
+                        <th>项目名称</th>
+                        <th>预算(万)</th>
+                        <th>投标截止</th>
+                        <th>服务期</th>
+                        <th>评分</th>
+                        <th>跟进状态</th>
+                        <th>负责人</th>
+                        <th>到期倒计时</th>
+                    </tr>
+                </thead>
+                <tbody id="ledger-body">
+                </tbody>
+            </table>
+            </div>
+        </div>
+
+        <!-- ==================== 到期提醒模块 ==================== -->
+        <div id="renewal-alerts-section" class="urgent-section" style="border-color:#f39c12;background:linear-gradient(135deg,#fffbf0,#fff8e6);">
+            <h2 style="color:#f39c12;">⏰ 存量项目到期续签提醒</h2>
+            <p style="font-size:13px;color:#666;margin-bottom:16px;">系统自动检测合同/服务到期时间，提前3个月（90天）触发提醒</p>
+            <div id="renewal-alert-cards" class="urgent-cards">
+            </div>
+            <div id="no-alerts" style="text-align:center;padding:20px;color:#999;display:none;">
+                当前无需续签提醒的项目
+            </div>
+        </div>
+
+        <!-- ==================== 台账统计卡片 ==================== -->
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;margin-bottom:24px;">
+            <div style="background:white;border-radius:12px;padding:20px;box-shadow:0 2px 12px rgba(0,0,0,0.06);text-align:center;">
+                <div style="font-size:28px;font-weight:700;color:#0f3460;" id="stat-total-budget">3,629</div>
+                <div style="font-size:12px;color:#666;margin-top:4px;">预算总额(万元)</div>
+            </div>
+            <div style="background:white;border-radius:12px;padding:20px;box-shadow:0 2px 12px rgba(0,0,0,0.06);text-align:center;">
+                <div style="font-size:28px;font-weight:700;color:#e94560;" id="stat-urgent-count">0</div>
+                <div style="font-size:12px;color:#666;margin-top:4px;">紧急(30天内到期)</div>
+            </div>
+            <div style="background:white;border-radius:12px;padding:20px;box-shadow:0 2px 12px rgba(0,0,0,0.06);text-align:center;">
+                <div style="font-size:28px;font-weight:700;color:#f39c12;" id="stat-warning-count">0</div>
+                <div style="font-size:12px;color:#666;margin-top:4px;">预警(90天内到期)</div>
+            </div>
+            <div style="background:white;border-radius:12px;padding:20px;box-shadow:0 2px 12px rgba(0,0,0,0.06);text-align:center;">
+                <div style="font-size:28px;font-weight:700;color:#00b894;" id="stat-bidded-count">0</div>
+                <div style="font-size:12px;color:#666;margin-top:4px;">已投标/准备投标</div>
+            </div>
+        </div>
+
         <!-- Footer -->
         <div class="footer">
             <p>本清单基于公开网络信息整理，建议以各平台官方最新公告为准</p>
-            <p>生成时间：2026年5月11日 00:10 | 数据仅供参考</p>
+            <p>生成时间：2026年5月11日 00:10 | 最后更新：<span id="last-update"></span> | 数据仅供参考</p>
         </div>
     </div>
 
     <script>
+        // ==================== 商机台账数据 ====================
+        const ledgerData = [
+            {id:1, type:'存量续签', category:'银行', client:'广州银行股份有限公司', project:'2026-2028年微信视频号、抖音号代运营服务采购', budget:150, deadline:'2026-05-09', period:'3年', serviceEnd:'2029-05-09', score:'S', status:'已投标', owner:'张经理', url:'http://www.gzcb.com.cn/jrgy/xwgg/zygg/cggg/202604/t20260428_71710.html'},
+            {id:2, type:'存量续签', category:'银行', client:'兴业银行南京分行', project:'2026年线上新媒体运营项目', budget:200, deadline:'2026-06-15', period:'1年', serviceEnd:'2027-06-15', score:'S', status:'准备投标', owner:'李总监', url:'https://cg.cib.com.cn/cms/default/webfile/gyszj/20260409/1226949697248165888.html'},
+            {id:3, type:'存量续签', category:'银行', client:'中国邮政储蓄银行天津分行', project:'2026-2027年营销策划服务采购', budget:1600, deadline:'2026-05-30', period:'2年', serviceEnd:'2028-05-30', score:'S', status:'方案准备中', owner:'王总', url:'https://www.chinapost.com.cn/html1/report/2512/5834-1.htm'},
+            {id:4, type:'存量续签', category:'保险', client:'中国人民财产保险江苏省分公司', project:'新媒体运营抖音第三方服务项目', budget:80, deadline:'2026-06-20', period:'1年', serviceEnd:'2027-06-20', score:'A', status:'跟进中', owner:'张经理', url:'https://ec.picc.com/cms/default/webfile/4ywgg1/20251225/1188760365488406528.html'},
+            {id:5, type:'存量续签', category:'保险', client:'中邮人寿保险股份有限公司', project:'2026-2028年宣传设计类服务入围', budget:1064, deadline:'2026-06-10', period:'2年', serviceEnd:'2028-06-10', score:'S', status:'准备投标', owner:'李总监', url:'https://www.chinapost.com.cn/xhtml1/report/2603/7392-1.htm'},
+            {id:6, type:'新增专项', category:'保险', client:'太平资产管理有限公司', project:'2026-2027年度微信公众号运维服务', budget:60, deadline:'2026-05-25', period:'2年', serviceEnd:'2028-05-25', score:'A', status:'评估资质中', owner:'王总', url:'https://www.zsztb.cn/class3/264012.html'},
+            {id:7, type:'存量续签', category:'证券', client:'长江证券股份有限公司', project:'2026年度新媒体渠道推广项目(4标包)', budget:120, deadline:'2026-06-05', period:'1年', serviceEnd:'2027-06-05', score:'A', status:'准备投标', owner:'张经理', url:'http://www.hbbidding.com.cn/view/22921.html'},
+            {id:8, type:'新增专项', category:'证券', client:'东北证券股份有限公司', project:'2025年信息流广告投放代理服务', budget:100, deadline:'2026-05-20', period:'1年', serviceEnd:'2027-05-20', score:'B', status:'评估资质中', owner:'李总监', url:'http://www.yfbzb.com/inviteBid/detail/20251010_543518366.html'},
+            {id:9, type:'存量续签', category:'证券', client:'长城证券股份有限公司', project:'长城炼金术2026年定制运营活动服务', budget:80, deadline:'2026-05-12', period:'1年', serviceEnd:'2027-05-12', score:'A', status:'已投标', owner:'王总', url:'https://www.bidnews.cn/caigou/zhaobiao-105128152.html'},
+            {id:10, type:'存量续签', category:'基金', client:'万家基金管理有限公司', project:'视频与平台推广服务采购', budget:50, deadline:'2026-05-28', period:'1年', serviceEnd:'2027-05-28', score:'A', status:'方案准备中', owner:'张经理', url:'http://linyi.ygcgfw.com/gggs/001001/001001001/20260202/98561ea8-aac3-4659-b0d1-e591da47bfb7.html'},
+            {id:11, type:'新增专项', category:'基金', client:'华富基金管理有限公司', project:'2026-2027 ETF和主动权益基金多媒介推广', budget:45, deadline:'2026-06-30', period:'2年', serviceEnd:'2028-06-30', score:'B', status:'跟进中', owner:'李总监', url:'http://www.ahtba.org.cn/site/trade/affiche/detail/4d9da1fa-f7f4-11f0-b7f6-00163e1f3e9b'},
+            {id:12, type:'存量续签', category:'基金', client:'兴业基金管理有限公司', project:'2026年腾讯理财通营销推广', budget:80, deadline:'2026-06-15', period:'1年', serviceEnd:'2027-06-15', score:'B', status:'评估资质中', owner:'王总', url:'http://www.caizhaowang.com/news-1-53e5aeb26f3b5cd97011b49b41813924bf10392dc5deaee9.html'}
+        ];
+
+        // ==================== 渲染台账表格 ====================
+        function renderLedger() {
+            const tbody = document.getElementById('ledger-body');
+            const today = new Date();
+            tbody.innerHTML = '';
+
+            ledgerData.forEach(item => {
+                const deadlineDate = new Date(item.deadline);
+                const daysToDeadline = Math.ceil((deadlineDate - today) / (1000*60*60*24));
+                const serviceEndDate = new Date(item.serviceEnd);
+                const daysToEnd = Math.ceil((serviceEndDate - today) / (1000*60*60*24));
+
+                let countdownHtml = '';
+                if (daysToEnd <= 30) {
+                    countdownHtml = `<span style="background:#e94560;color:white;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:600;">${daysToEnd}天 极紧急</span>`;
+                } else if (daysToEnd <= 90) {
+                    countdownHtml = `<span style="background:#f39c12;color:white;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:600;">${daysToEnd}天 需关注</span>`;
+                } else if (daysToEnd <= 180) {
+                    countdownHtml = `<span style="background:#00b894;color:white;padding:2px 8px;border-radius:4px;font-size:11px;">${daysToEnd}天</span>`;
+                } else {
+                    countdownHtml = `<span style="color:#999;font-size:12px;">${daysToEnd}天</span>`;
+                }
+
+                let typeTag = item.type === '存量续签' 
+                    ? '<span style="background:#d4edda;color:#155724;padding:2px 6px;border-radius:3px;font-size:11px;">存量续签</span>'
+                    : '<span style="background:#fff3cd;color:#856404;padding:2px 6px;border-radius:3px;font-size:11px;">新增专项</span>';
+
+                let scoreHtml = '';
+                if (item.score === 'S') scoreHtml = '<span style="color:#e94560;font-weight:700;">S</span>';
+                else if (item.score === 'A') scoreHtml = '<span style="color:#f39c12;font-weight:700;">A</span>';
+                else scoreHtml = '<span style="color:#0066cc;">B</span>';
+
+                let statusStyle = '';
+                if (item.status === '已投标') statusStyle = 'background:#d4edda;color:#155724;';
+                else if (item.status === '准备投标') statusStyle = 'background:#cce5ff;color:#004085;';
+                else if (item.status === '方案准备中') statusStyle = 'background:#fff3cd;color:#856404;';
+                else if (item.status === '跟进中') statusStyle = 'background:#e2e3e5;color:#383d41;';
+                else statusStyle = 'background:#f8d7da;color:#721c24;';
+
+                let deadlineStyle = daysToDeadline <= 7 ? 'color:#e94560;font-weight:700;' : (daysToDeadline <= 14 ? 'color:#f39c12;' : '');
+
+                const row = `<tr style="${daysToDeadline <= 7 ? 'background:#fff5f5;' : ''}">
+                    <td style="text-align:center;">${item.id}</td>
+                    <td style="text-align:center;">${typeTag}</td>
+                    <td style="text-align:center;">${item.category}</td>
+                    <td class="org-name">${item.client}</td>
+                    <td class="project-name"><a href="${item.url}" target="_blank" style="color:#1a1a2e;text-decoration:none;">${item.project}</a></td>
+                    <td style="text-align:center;font-weight:600;color:#e94560;">${item.budget}</td>
+                    <td style="text-align:center;${deadlineStyle}">${item.deadline}</td>
+                    <td style="text-align:center;">${item.period}</td>
+                    <td style="text-align:center;">${scoreHtml}</td>
+                    <td style="text-align:center;"><span style="padding:2px 8px;border-radius:12px;font-size:11px;${statusStyle}">${item.status}</span></td>
+                    <td style="text-align:center;">${item.owner}</td>
+                    <td style="text-align:center;">${countdownHtml}</td>
+                </tr>`;
+                tbody.innerHTML += row;
+            });
+        }
+
+        // ==================== 渲染到期提醒 ====================
+        function renderRenewalAlerts() {
+            const container = document.getElementById('renewal-alert-cards');
+            const noAlerts = document.getElementById('no-alerts');
+            const today = new Date();
+            container.innerHTML = '';
+
+            let urgentCount = 0;
+            let warningCount = 0;
+            let alerts = [];
+
+            ledgerData.forEach(item => {
+                if (item.type !== '存量续签') return;
+                const serviceEndDate = new Date(item.serviceEnd);
+                const daysToEnd = Math.ceil((serviceEndDate - today) / (1000*60*60*24));
+
+                if (daysToEnd <= 90 && daysToEnd > 0) {
+                    alerts.push({...item, daysToEnd});
+                    if (daysToEnd <= 30) urgentCount++;
+                    else warningCount++;
+                }
+            });
+
+            // Sort by urgency
+            alerts.sort((a, b) => a.daysToEnd - b.daysToEnd);
+
+            if (alerts.length === 0) {
+                noAlerts.style.display = 'block';
+                container.style.display = 'none';
+            } else {
+                noAlerts.style.display = 'none';
+                container.style.display = 'grid';
+
+                alerts.forEach(item => {
+                    let levelColor, levelText, levelBg;
+                    if (item.daysToEnd <= 30) {
+                        levelColor = '#e94560'; levelText = '极高紧急'; levelBg = 'rgba(233,69,96,0.1)';
+                    } else if (item.daysToEnd <= 60) {
+                        levelColor = '#f39c12'; levelText = '紧急预警'; levelBg = 'rgba(243,156,18,0.1)';
+                    } else {
+                        levelColor = '#00b894'; levelText = '提前关注'; levelBg = 'rgba(0,184,148,0.1)';
+                    }
+
+                    const card = `<div class="urgent-card" style="border-left-color:${levelColor};background:${levelBg};">
+                        <span style="background:${levelColor};color:white;padding:2px 10px;border-radius:12px;font-size:11px;font-weight:600;display:inline-block;margin-bottom:8px;">
+                            ${levelText} · 距到期${item.daysToEnd}天
+                        </span>
+                        <h3 style="font-size:14px;margin-bottom:4px;">${item.project}</h3>
+                        <div style="font-size:13px;color:#666;margin-bottom:8px;">${item.client}</div>
+                        <div style="font-size:12px;color:#444;margin-bottom:6px;">
+                            <strong>服务到期：</strong>${item.serviceEnd} · <strong>负责人：</strong>${item.owner}
+                        </div>
+                        <div style="font-size:12px;color:#444;margin-bottom:8px;">
+                            <strong>当前状态：</strong><span style="padding:1px 6px;border-radius:3px;background:${levelBg};color:${levelColor};">${item.status}</span>
+                            · <strong>评分：</strong>${item.score}级
+                        </div>
+                        <div style="font-size:11px;color:#555;background:white;padding:8px 10px;border-radius:6px;border:1px solid #eee;">
+                            <strong>建议行动：</strong><br>
+                            ${item.daysToEnd <= 30 
+                                ? '1.立即安排客户拜访<br>2.确认是否已发布新一轮招标<br>3.提交续签方案初稿' 
+                                : item.daysToEnd <= 60 
+                                    ? '1.联系客户了解下年度计划<br>2.关注是否发布招标公告<br>3.准备续签方案' 
+                                    : '1.了解客户预算编制进度<br>2.梳理本年服务成果<br>3.开始准备续签提案'}
+                        </div>
+                    </div>`;
+                    container.innerHTML += card;
+                });
+            }
+
+            // Update stats
+            document.getElementById('stat-urgent-count').textContent = urgentCount;
+            document.getElementById('stat-warning-count').textContent = warningCount;
+
+            // Count bidded
+            let biddedCount = ledgerData.filter(i => i.status === '已投标' || i.status === '准备投标').length;
+            document.getElementById('stat-bidded-count').textContent = biddedCount;
+        }
+
+        // ==================== 导出Excel功能 ====================
+        function exportLedger() {
+            let csv = '\uFEFF序号,商机类型,机构分类,招标人,项目名称,预算(万元),投标截止,服务期,评分,跟进状态,负责人,服务到期\n';
+            ledgerData.forEach(item => {
+                csv += `${item.id},${item.type},${item.category},"${item.client}","${item.project}",${item.budget},${item.deadline},${item.period},${item.score},${item.status},${item.owner},${item.serviceEnd}\n`;
+            });
+            const blob = new Blob([csv], {type: 'text/csv;charset=utf-8;'});
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = '招投标商机台账_' + new Date().toISOString().slice(0,10) + '.csv';
+            link.click();
+        }
+
+        // ==================== 更新时间 ====================
+        document.getElementById('last-update').textContent = new Date().toLocaleString('zh-CN');
+
+        // ==================== 初始化 ====================
+        renderLedger();
+        renderRenewalAlerts();
         function filterByType(type) {
             // Update button states
             document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
