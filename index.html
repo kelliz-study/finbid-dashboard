@@ -202,6 +202,8 @@
         .tag-cehua { background: #00b894; color: white; }
         .tag-sheji { background: #e17055; color: white; }
         .tag-qiwei { background: #2d6cdf; color: white; }
+        .tag-renewal { background: #ff6b35; color: white; }
+        .tag-special { background: #8b5cf6; color: white; }
 
         /* NEW Badge */
         .tag-new {
@@ -251,6 +253,8 @@
         .icon-securities { background: #e8f5e9; }
         .icon-fund { background: #fff3e0; }
         .icon-other { background: #f3e5f5; }
+        .icon-renewal { background: #fff0e6; }
+        .icon-special { background: #ede9fe; }
 
         .badge {
             background: #f0f2f5;
@@ -329,6 +333,105 @@
         .status-collect { background: #fff3cd; color: #856404; }
         .status-ref { background: #e2e3e5; color: #383d41; }
         .status-expired { background: #f8d7da; color: #721c24; }
+        .status-urgent { background: #e94560; color: white; }
+        .status-renewal { background: #ff6b35; color: white; }
+
+        /* Renewal Alert Section */
+        .renewal-section {
+            background: linear-gradient(135deg, #fff8f0, #fff3e6);
+            border: 2px solid #ff6b35;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 24px;
+        }
+
+        .renewal-section h2 {
+            color: #ff6b35;
+            font-size: 18px;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .renewal-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+            gap: 16px;
+        }
+
+        .renewal-card {
+            background: white;
+            border-radius: 10px;
+            padding: 18px;
+            box-shadow: 0 2px 8px rgba(255,107,53,0.1);
+            border-left: 4px solid #ff6b35;
+            transition: transform 0.2s;
+        }
+
+        .renewal-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(255,107,53,0.15);
+        }
+
+        .renewal-card .alert-level {
+            padding: 2px 10px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 8px;
+        }
+
+        .alert-level-S { background: #dc2626; color: white; }
+        .alert-level-A { background: #f59e0b; color: white; }
+        .alert-level-B { background: #3b82f6; color: white; }
+
+        .renewal-card h3 {
+            font-size: 15px;
+            margin-bottom: 6px;
+            color: #1a1a2e;
+        }
+
+        .renewal-card .detail {
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 4px;
+        }
+
+        .renewal-card .upsell {
+            background: #f0fdf4;
+            border: 1px solid #86efac;
+            border-radius: 6px;
+            padding: 8px 12px;
+            margin-top: 8px;
+            font-size: 12px;
+            color: #166534;
+        }
+
+        .renewal-card .upsell strong {
+            display: block;
+            margin-bottom: 4px;
+            color: #15803d;
+        }
+
+        /* Special Opportunities Section */
+        .special-section {
+            background: linear-gradient(135deg, #f5f3ff, #ede9fe);
+            border: 2px solid #8b5cf6;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 24px;
+        }
+
+        .special-section h2 {
+            color: #6d28d9;
+            font-size: 18px;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
 
         /* Heatmap */
         .heatmap-section {
@@ -564,6 +667,7 @@
             .stat-item { padding: 8px 12px; }
             .stat-item .num { font-size: 18px; }
             .urgent-cards { grid-template-columns: 1fr; }
+            .renewal-cards { grid-template-columns: 1fr; }
             .filter-bar { padding: 14px; }
             table { font-size: 12px; }
             thead th, tbody td { padding: 8px 10px; }
@@ -576,10 +680,10 @@
     <div class="header">
         <div class="header-content">
             <h1>🎯 金融机构数字营销招投标商机清单</h1>
-            <div class="subtitle">扫描时间：2026年5月14日 | 数据来源：全国公共资源交易平台 · 金融机构官方采购平台 · 行业招投标网站</div>
+            <div class="subtitle">扫描时间：2026年5月14日 21:30 | 数据来源：全国公共资源交易平台 · 金融机构官方采购平台 · 行业招投标网站</div>
             <div class="stats-bar">
                 <div class="stat-item">
-                    <span class="num">41</span>
+                    <span class="num">49</span>
                     <span class="label">商机总数</span>
                 </div>
                 <div class="stat-item">
@@ -587,12 +691,16 @@
                     <span class="label">本周截止</span>
                 </div>
                 <div class="stat-item">
-                    <span class="num">24</span>
-                    <span class="label">关键词命中</span>
+                    <span class="num">8</span>
+                    <span class="label">新增专项商机</span>
                 </div>
                 <div class="stat-item">
-                    <span class="num">11</span>
-                    <span class="label">监控源推荐</span>
+                    <span class="num">1</span>
+                    <span class="label">存量续签预警</span>
+                </div>
+                <div class="stat-item">
+                    <span class="num">24</span>
+                    <span class="label">关键词命中</span>
                 </div>
             </div>
         </div>
@@ -608,10 +716,12 @@
             <button class="filter-btn" onclick="filterByType('securities')">📈 证券</button>
             <button class="filter-btn" onclick="filterByType('fund')">💰 基金</button>
             <button class="filter-btn" onclick="filterByType('other')">🏢 其他金融</button>
+            <button class="filter-btn" onclick="filterByType('renewal')">🔄 存量续签</button>
+            <button class="filter-btn" onclick="filterByType('special')">⭐ 新增专项</button>
         </div>
 
         <!-- Urgent Section -->
-        <div class="urgent-section">
+        <div class="urgent-section" id="urgent-section">
             <h2>🔥 紧急跟进 — 本周内截止</h2>
             <div class="urgent-cards">
                 <div class="urgent-card" data-type="insurance">
@@ -623,7 +733,7 @@
                         <span class="tag tag-xiaohongshu">小红书</span>
                         <span class="tag tag-shipin">视频号</span>
                         <span class="tag tag-zhibo">直播运营</span>
-                        <span class="tag tag-new">今日新增</span>
+                        <span class="tag tag-special">新增专项</span>
                     </div>
                     <div style="margin-top:10px;font-size:12px;color:#666;">
                         预算200万元 · 2年框架协议 · 项目编号 CG1200022002289581
@@ -637,7 +747,7 @@
                     <div class="tags">
                         <span class="tag tag-xiaohongshu">小红书</span>
                         <span class="tag tag-cehua">运营规划</span>
-                        <span class="tag tag-new">今日新增</span>
+                        <span class="tag tag-special">新增专项</span>
                     </div>
                     <div style="margin-top:10px;font-size:12px;color:#666;">
                         30天搭建+45天运营规划 · 资质要求：注册资金≥1000万
@@ -647,11 +757,191 @@
             </div>
         </div>
 
+        <!-- Renewal Alert Section -->
+        <div class="renewal-section" data-type="renewal" id="renewal-section">
+            <h2>🔄 存量续签预警</h2>
+            <div class="renewal-cards">
+                <div class="renewal-card">
+                    <span class="alert-level alert-level-S">🔴 S级-战略预警</span>
+                    <h3>示例银行股份有限公司 — 2025年度新媒体代运营服务</h3>
+                    <div class="detail">📋 合同编号：DEMO-2025-001 | 签约日期：2025-01-15</div>
+                    <div class="detail">📅 合同到期：2026-01-31 | <strong style="color:#dc2626;">已过期103天</strong></div>
+                    <div class="detail">💰 合同金额：80万元 | 续签方式：年度招标</div>
+                    <div class="detail">📌 服务模块：微信公众号代运营、视频号运营</div>
+                    <div class="detail" style="color:#dc2626;font-weight:600;">⚠️ 行动要求：立即续签</div>
+                    <div class="upsell">
+                        <strong>💡 增值机会</strong>
+                        · 客户计划2026年开通抖音企业号<br>
+                        · 客户有小红书品牌种草需求意向
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Special New Opportunities Section -->
+        <div class="special-section" data-type="special" id="special-section">
+            <h2>⭐ 新增专项商机（来自龙虾系统自动抓取）</h2>
+            <div style="overflow-x:auto;">
+            <table>
+                <thead>
+                    <tr>
+                        <th>项目名称</th>
+                        <th>招标人</th>
+                        <th>关键词匹配</th>
+                        <th>预算/规模</th>
+                        <th>截止日期</th>
+                        <th>优先级</th>
+                        <th>状态</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style="background-color: #fff8f8;">
+                        <td class="project-name">
+                            <span class="tag tag-new" style="margin-right:6px;">今日新增</span>
+                            鼎和财产保险2026-2027年新媒体平台宣传框架服务公开招标
+                        </td>
+                        <td class="org-name">鼎和财产保险股份有限公司</td>
+                        <td>
+                            <span class="tag tag-douyin">抖音</span>
+                            <span class="tag tag-xiaohongshu">小红书</span>
+                            <span class="tag tag-shipin">视频号</span>
+                            <span class="tag tag-zhibo">直播运营</span>
+                        </td>
+                        <td class="budget">200万元</td>
+                        <td>2026-05-14</td>
+                        <td><span class="status-badge status-urgent">P1</span></td>
+                        <td><span class="status-badge status-urgent">⚠️今日截止</span></td>
+                        <td><a href="https://www.bidding.csg.cn/zbgg/1200427871.jhtml" target="_blank" class="link-btn">查看</a></td>
+                    </tr>
+                    <tr style="background-color: #fff8f8;">
+                        <td class="project-name">
+                            <span class="tag tag-new" style="margin-right:6px;">今日新增</span>
+                            太保家园2026年新媒体(小红书)平台搭建及内容制作
+                        </td>
+                        <td class="org-name">中国太平洋保险（集团）股份有限公司</td>
+                        <td>
+                            <span class="tag tag-xiaohongshu">小红书</span>
+                            <span class="tag tag-cehua">内容种草</span>
+                        </td>
+                        <td>未披露</td>
+                        <td>2026-05-20</td>
+                        <td><span class="status-badge status-urgent">P1</span></td>
+                        <td><span class="status-badge status-active">6天后截止</span></td>
+                        <td><a href="https://purchase.cpic.com.cn/cms/channel/ywgg1/2000500.htm" target="_blank" class="link-btn">查看</a></td>
+                    </tr>
+                    <tr style="background-color: #fff8f8;">
+                        <td class="project-name">
+                            <span class="tag tag-new" style="margin-right:6px;">今日新增</span>
+                            中国太平洋保险2026年新媒体传播抖音和小红书活动项目
+                        </td>
+                        <td class="org-name">中国太平洋保险（集团）股份有限公司</td>
+                        <td>
+                            <span class="tag tag-douyin">抖音</span>
+                            <span class="tag tag-xiaohongshu">小红书</span>
+                            <span class="tag tag-cehua">品牌宣传</span>
+                        </td>
+                        <td>未披露</td>
+                        <td>2026-04-17</td>
+                        <td><span class="status-badge status-urgent">P1</span></td>
+                        <td><span class="status-badge status-expired">已过期</span></td>
+                        <td><a href="https://purchase.cpic.com.cn/cms/channel/ywgg1/2000415.htm" target="_blank" class="link-btn">查看</a></td>
+                    </tr>
+                    <tr style="background-color: #fff8f8;">
+                        <td class="project-name">
+                            <span class="tag tag-new" style="margin-right:6px;">今日新增</span>
+                            中国邮政广西分公司2026年代理金融视频号运营服务采购
+                        </td>
+                        <td class="org-name">中国邮政集团有限公司广西分公司</td>
+                        <td>
+                            <span class="tag tag-shipin">视频号</span>
+                            <span class="tag tag-douyin">短视频</span>
+                            <span class="tag tag-cehua">新媒体</span>
+                        </td>
+                        <td class="budget">120万元</td>
+                        <td>2026-05-06</td>
+                        <td><span class="status-badge status-urgent">P1</span></td>
+                        <td><span class="status-badge status-expired">已过期</span></td>
+                        <td><a href="https://www.chinapost.com.cn/html1/report/2604/4027-1.htm" target="_blank" class="link-btn">查看</a></td>
+                    </tr>
+                    <tr style="background-color: #fff8f8;">
+                        <td class="project-name">
+                            <span class="tag tag-new" style="margin-right:6px;">今日新增</span>
+                            邮储银行天津分行2026-2027官方微信视频号及抖音号运营服务
+                        </td>
+                        <td class="org-name">中国邮政储蓄银行天津分行</td>
+                        <td>
+                            <span class="tag tag-shipin">视频号</span>
+                            <span class="tag tag-douyin">抖音</span>
+                            <span class="tag tag-zhibo">直播运营</span>
+                        </td>
+                        <td>报价参考：口播3万/条，直播9800元/场</td>
+                        <td>未明确</td>
+                        <td><span class="status-badge status-urgent">P1</span></td>
+                        <td><span class="status-badge status-collect">征集中</span></td>
+                        <td><a href="https://cg.psbc.com/cms/default/webfile/1ywgg2/20260228/1212483893760884736.html" target="_blank" class="link-btn">查看</a></td>
+                    </tr>
+                    <tr>
+                        <td class="project-name">
+                            <span class="tag tag-new" style="margin-right:6px;">今日新增</span>
+                            泰康人寿2026年财富季企划营销项目
+                        </td>
+                        <td class="org-name">泰康人寿保险股份有限公司</td>
+                        <td>
+                            <span class="tag tag-xiaohongshu">小红书</span>
+                            <span class="tag tag-cehua">营销策划</span>
+                            <span class="tag tag-toufa">信息流</span>
+                        </td>
+                        <td>全案策划执行</td>
+                        <td>2025-08-29</td>
+                        <td><span class="status-badge status-collect">P2</span></td>
+                        <td><span class="status-badge status-expired">已过期</span></td>
+                        <td><a href="https://tip.taikanglife.com/gyszj/12742.jhtml" target="_blank" class="link-btn">查看</a></td>
+                    </tr>
+                    <tr>
+                        <td class="project-name">
+                            <span class="tag tag-new" style="margin-right:6px;">今日新增</span>
+                            恒丰银行西安分行2026年网络媒体广告投放供应商入围
+                        </td>
+                        <td class="org-name">恒丰银行西安分行</td>
+                        <td>
+                            <span class="tag tag-toufa">广告投放</span>
+                            <span class="tag tag-douyin">抖音</span>
+                            <span class="tag tag-toufa">信息流</span>
+                        </td>
+                        <td>供应商入围</td>
+                        <td>2026-04-28</td>
+                        <td><span class="status-badge status-ref">P3</span></td>
+                        <td><span class="status-badge status-expired">已过期</span></td>
+                        <td><a href="https://www.chinamae.com/purchases/49db88c7dbe1721a66992dbf37770483.html" target="_blank" class="link-btn">查看</a></td>
+                    </tr>
+                    <tr>
+                        <td class="project-name">
+                            <span class="tag tag-new" style="margin-right:6px;">今日新增</span>
+                            交通银行广东省分行2026-2028年度主流新媒体信息流广告
+                        </td>
+                        <td class="org-name">交通银行股份有限公司广东省分行</td>
+                        <td>
+                            <span class="tag tag-toufa">信息流</span>
+                            <span class="tag tag-toufa">广告投放</span>
+                            <span class="tag tag-douyin">抖音</span>
+                        </td>
+                        <td>3年长期合作</td>
+                        <td>未明确</td>
+                        <td><span class="status-badge status-ref">P3</span></td>
+                        <td><span class="status-badge status-collect">征集中</span></td>
+                        <td><a href="http://gztpc.com/content/info.html?id=24497" target="_blank" class="link-btn">查看</a></td>
+                    </tr>
+                </tbody>
+            </table>
+            </div>
+        </div>
+
         <!-- Bank Section -->
         <div class="section" data-type="bank">
             <div class="section-header">
                 <h2><span class="icon icon-bank">🏦</span> 银行类商机</h2>
-                <span class="badge">15个项目（含3条今日新增）</span>
+                <span class="badge">15个项目（含3条新增专项）</span>
             </div>
             <div style="overflow-x:auto;">
             <table>
@@ -805,10 +1095,9 @@
                         <td><span class="status-badge status-active">正在招标</span></td>
                         <td><a href="https://www.chinapost.com.cn/xhtml1/report/2511/6788-1.htm" target="_blank" class="link-btn">查看</a></td>
                     </tr>
-                    <!-- 今日新增商机 -->
-                    <tr style="background-color: #fff8f8;">
+                    <tr style="background-color: #f5f3ff;">
                         <td class="project-name">
-                            <span class="tag tag-new" style="margin-right:6px;">今日新增</span>
+                            <span class="tag tag-special" style="margin-right:6px;">新增专项</span>
                             邮储银行天津分行2026-2027官方微信视频号及抖音号运营服务
                         </td>
                         <td class="org-name">中国邮政储蓄银行天津分行</td>
@@ -822,9 +1111,9 @@
                         <td><span class="status-badge status-collect">征集中</span></td>
                         <td><a href="https://cg.psbc.com/cms/default/webfile/1ywgg2/20260228/1212483893760884736.html" target="_blank" class="link-btn">查看</a></td>
                     </tr>
-                    <tr style="background-color: #fff8f8;">
+                    <tr style="background-color: #f5f3ff;">
                         <td class="project-name">
-                            <span class="tag tag-new" style="margin-right:6px;">今日新增</span>
+                            <span class="tag tag-special" style="margin-right:6px;">新增专项</span>
                             交通银行广东省分行2026-2028年度主流新媒体信息流广告
                         </td>
                         <td class="org-name">交通银行股份有限公司广东省分行</td>
@@ -857,7 +1146,7 @@
         <div class="section" data-type="insurance">
             <div class="section-header">
                 <h2><span class="icon icon-insurance">🛡️</span> 保险类商机</h2>
-                <span class="badge">9个项目（含5条今日新增）</span>
+                <span class="badge">9个项目（含5条新增专项）</span>
             </div>
             <div style="overflow-x:auto;">
             <table>
@@ -930,10 +1219,9 @@
                         <td><span class="status-badge status-active">正在招标</span></td>
                         <td><a href="https://www.zsztb.cn/class3/264012.html" target="_blank" class="link-btn">查看</a></td>
                     </tr>
-                    <!-- 今日新增商机 -->
-                    <tr style="background-color: #fff8f8;">
+                    <tr style="background-color: #f5f3ff;">
                         <td class="project-name">
-                            <span class="tag tag-new" style="margin-right:6px;">今日新增</span>
+                            <span class="tag tag-special" style="margin-right:6px;">新增专项</span>
                             鼎和财产保险2026-2027年新媒体平台宣传框架服务公开招标
                         </td>
                         <td class="org-name">鼎和财产保险股份有限公司</td>
@@ -944,12 +1232,12 @@
                             <span class="tag tag-zhibo">直播运营</span>
                         </td>
                         <td class="budget">200万元</td>
-                        <td><span class="status-badge status-active">⚠️今日截止</span></td>
+                        <td><span class="status-badge status-urgent">⚠️今日截止</span></td>
                         <td><a href="https://www.bidding.csg.cn/zbgg/1200427871.jhtml" target="_blank" class="link-btn">查看</a></td>
                     </tr>
-                    <tr style="background-color: #fff8f8;">
+                    <tr style="background-color: #f5f3ff;">
                         <td class="project-name">
-                            <span class="tag tag-new" style="margin-right:6px;">今日新增</span>
+                            <span class="tag tag-special" style="margin-right:6px;">新增专项</span>
                             太保家园2026年新媒体(小红书)平台搭建及内容制作
                         </td>
                         <td class="org-name">中国太平洋保险（集团）股份有限公司</td>
@@ -1122,7 +1410,7 @@
         <div class="section" data-type="other">
             <div class="section-header">
                 <h2><span class="icon icon-other">🏢</span> 其他金融机构商机</h2>
-                <span class="badge">6个项目（含1条今日新增）</span>
+                <span class="badge">7个项目（含1条新增专项）</span>
             </div>
             <div style="overflow-x:auto;">
             <table>
@@ -1132,6 +1420,7 @@
                         <th>招标人</th>
                         <th>关键词匹配</th>
                         <th>预算/规模</th>
+                        <th>状态</th>
                         <th>操作</th>
                     </tr>
                 </thead>
@@ -1144,6 +1433,7 @@
                             <span class="tag tag-toufa">信息流广告</span>
                         </td>
                         <td>大数据定向投放</td>
+                        <td><span class="status-badge status-active">正在招标</span></td>
                         <td><a href="https://eps.sinosure.com.cn/cms/channel/xmgg1/905188.htm" target="_blank" class="link-btn">查看</a></td>
                     </tr>
                     <tr>
@@ -1153,6 +1443,7 @@
                             <span class="tag tag-toufa">信息流投放</span>
                         </td>
                         <td>最多8家中标</td>
+                        <td><span class="status-badge status-active">正在招标</span></td>
                         <td><a href="https://www.zbytb.com/s-zb-55577084.html" target="_blank" class="link-btn">查看</a></td>
                     </tr>
                     <tr>
@@ -1163,6 +1454,7 @@
                             <span class="tag tag-toufa">信息流曝光600万次</span>
                         </td>
                         <td>多包件</td>
+                        <td><span class="status-badge status-active">正在招标</span></td>
                         <td><a href="https://m.bidnews.cn/caigou/zhaobiao-100232552.html" target="_blank" class="link-btn">查看</a></td>
                     </tr>
                     <tr>
@@ -1174,6 +1466,7 @@
                             <span class="tag tag-cehua">营销规划</span>
                         </td>
                         <td>21.6万元</td>
+                        <td><span class="status-badge status-active">正在招标</span></td>
                         <td><a href="http://qhggzyjy.gov.cn/xin/jyxx/001002/001002001/20250815/af72b1f4-19c5-4026-b1b0-74fad4bc169a.html" target="_blank" class="link-btn">查看</a></td>
                     </tr>
                     <tr>
@@ -1184,12 +1477,12 @@
                             <span class="tag tag-gongzhonghao">服务号</span>
                         </td>
                         <td>第一年190万/两年</td>
+                        <td><span class="status-badge status-active">正在招标</span></td>
                         <td><a href="http://www.ctvpost.com/html1/report/2512/6111-1.htm" target="_blank" class="link-btn">查看</a></td>
                     </tr>
-                    <!-- 今日新增商机 -->
-                    <tr style="background-color: #fff8f8;">
+                    <tr style="background-color: #f5f3ff;">
                         <td class="project-name">
-                            <span class="tag tag-new" style="margin-right:6px;">今日新增</span>
+                            <span class="tag tag-special" style="margin-right:6px;">新增专项</span>
                             中国邮政广西分公司2026年代理金融视频号运营服务采购
                         </td>
                         <td class="org-name">中国邮政集团有限公司广西分公司</td>
@@ -1199,7 +1492,19 @@
                             <span class="tag tag-cehua">技能培训</span>
                         </td>
                         <td class="budget">120万元</td>
+                        <td><span class="status-badge status-expired">已过期</span></td>
                         <td><a href="https://www.chinapost.com.cn/html1/report/2604/4027-1.htm" target="_blank" class="link-btn">查看</a></td>
+                    </tr>
+                    <tr>
+                        <td class="project-name">恒丰银行西安分行2026年网络媒体广告投放供应商入围</td>
+                        <td class="org-name">恒丰银行西安分行</td>
+                        <td>
+                            <span class="tag tag-toufa">广告投放</span>
+                            <span class="tag tag-douyin">抖音</span>
+                        </td>
+                        <td>供应商入围</td>
+                        <td><span class="status-badge status-expired">已过期</span></td>
+                        <td><a href="https://www.chinamae.com/purchases/49db88c7dbe1721a66992dbf37770483.html" target="_blank" class="link-btn">查看</a></td>
                     </tr>
                 </tbody>
             </table>
@@ -1212,39 +1517,39 @@
             <div class="heatmap-grid">
                 <div class="heat-item heat-5">
                     <span class="kw">抖音/短视频</span>
-                    <span class="count">23</span>
+                    <span class="count">25</span>
                 </div>
                 <div class="heat-item heat-5">
                     <span class="kw">视频号</span>
-                    <span class="count">15</span>
+                    <span class="count">16</span>
                 </div>
                 <div class="heat-item heat-5">
                     <span class="kw">小红书</span>
-                    <span class="count">12</span>
+                    <span class="count">14</span>
                 </div>
                 <div class="heat-item heat-4">
                     <span class="kw">公众号代运营</span>
                     <span class="count">10</span>
                 </div>
                 <div class="heat-item heat-4">
+                    <span class="kw">信息流/广告投放</span>
+                    <span class="count">12</span>
+                </div>
+                <div class="heat-item heat-4">
                     <span class="kw">视频拍摄制作</span>
-                    <span class="count">9</span>
+                    <span class="count">10</span>
                 </div>
                 <div class="heat-item heat-4">
                     <span class="kw">视觉设计/海报</span>
                     <span class="count">8</span>
                 </div>
-                <div class="heat-item heat-4">
-                    <span class="kw">信息流/广告投放</span>
-                    <span class="count">10</span>
-                </div>
                 <div class="heat-item heat-3">
                     <span class="kw">直播运营</span>
-                    <span class="count">6</span>
+                    <span class="count">7</span>
                 </div>
                 <div class="heat-item heat-3">
                     <span class="kw">营销策划/活动全案</span>
-                    <span class="count">6</span>
+                    <span class="count">8</span>
                 </div>
                 <div class="heat-item heat-2">
                     <span class="kw">企业微信</span>
@@ -1252,7 +1557,7 @@
                 </div>
                 <div class="heat-item heat-2">
                     <span class="kw">品牌种草/KOL</span>
-                    <span class="count">3</span>
+                    <span class="count">4</span>
                 </div>
             </div>
         </div>
@@ -1285,9 +1590,12 @@
                     <div class="price">62.3万元（抖音+视频号+小红书 × 7期节日短视频）</div>
                 </div>
                 <div class="ref-card">
-                    <div class="project">贵州银行安顺分行 — 线上营销服务</div>
-                    <div class="winner">中标人：北京姬发科技</div>
-                    <div class="price">费率 7%</div>
+                    <div class="project">邮储银行天津分行 — 视频号抖音运营</div>
+                    <div class="winner">报价参考（采购公示）</div>
+                    <div class="price">
+                        口播视频 30,000元/条 · 长视频拍摄 30,000元/条<br>
+                        线上直播活动 9,800元/场
+                    </div>
                 </div>
             </div>
         </div>
@@ -1299,40 +1607,47 @@
                 <div class="action-item">
                     <span class="priority priority-high">1</span>
                     <div class="text">
-                        <strong>鼎和财产保险新媒体平台宣传项目（今日截止！）</strong>
+                        <strong>🔴 鼎和财产保险新媒体平台宣传项目（今日截止！）</strong>
                         预算200万元，2年框架协议，立即联系南方电网供应链集团（4008100100转2）
                     </div>
                 </div>
                 <div class="action-item">
                     <span class="priority priority-high">2</span>
                     <div class="text">
-                        <strong>太保家园小红书平台搭建项目（6天截止）</strong>
+                        <strong>🔴 太保家园小红书平台搭建项目（6天截止）</strong>
                         资质要求：注册资金≥1000万元，需金融行业服务案例
                     </div>
                 </div>
                 <div class="action-item">
-                    <span class="priority priority-mid">3</span>
+                    <span class="priority priority-high">3</span>
+                    <div class="text">
+                        <strong>🔴 示例银行存量续签（已过期103天！）</strong>
+                        S级战略预警，合同80万元已过期，需立即启动续签流程。增值机会：抖音企业号+小红书种草
+                    </div>
+                </div>
+                <div class="action-item">
+                    <span class="priority priority-mid">4</span>
                     <div class="text">
                         <strong>交通银行广东省分行信息流广告（3年长期）</strong>
                         关注正式招标公告，提前准备金融行业服务业绩材料
                     </div>
                 </div>
                 <div class="action-item">
-                    <span class="priority priority-mid">4</span>
+                    <span class="priority priority-mid">5</span>
                     <div class="text">
                         <strong>邮储银行天津分行视频号抖音运营</strong>
                         报价参考：口播视频30000元/条，长视频30000元/条，直播9800元/场
                     </div>
                 </div>
                 <div class="action-item">
-                    <span class="priority priority-mid">5</span>
+                    <span class="priority priority-mid">6</span>
                     <div class="text">
                         <strong>中国太保体系持续跟进</strong>
-                        太保集团、太保家园、太保寿险今年多个新媒体项目招标，建议完成供应商注册
+                        太保集团、太保家园今年多个新媒体项目招标，建议完成供应商注册
                     </div>
                 </div>
                 <div class="action-item">
-                    <span class="priority priority-low">6</span>
+                    <span class="priority priority-low">7</span>
                     <div class="text">
                         <strong>储备金融行业案例与资质</strong>
                         多数项目要求：持牌金融机构合同(30万+)、8类岗位团队、一级代理资质
@@ -1399,8 +1714,8 @@
                 <div class="source-item">
                     <span class="dot"></span>
                     <div>
-                        <div class="name">中信银行采购平台</div>
-                        <div class="url">https://ebid.cfhc.citic</div>
+                        <div class="name">广州公共资源交易中心</div>
+                        <div class="url">http://gztpc.com</div>
                     </div>
                 </div>
             </div>
@@ -1432,8 +1747,8 @@
         <!-- Footer -->
         <div class="footer">
             <p>本清单基于公开网络信息整理，建议以各平台官方最新公告为准</p>
-            <p>扫描时间：2026年5月14日 00:02 | 数据来源：全国公共资源交易平台 · 金融机构官方采购平台 · 行业招投标网站</p>
-            <p style="margin-top:8px;">🔄 自动扫描已启用，每日凌晨自动更新 | GitHub Pages: <a href="https://kelliz-study.github.io/finbid-dashboard/" style="color:#0f3460;">kelliz-study.github.io/finbid-dashboard/</a></p>
+            <p>扫描时间：2026年5月14日 21:30 | 数据来源：全国公共资源交易平台 · 金融机构官方采购平台 · 行业招投标网站</p>
+            <p style="margin-top:8px;">🔄 自动扫描已启用，每日21:30自动更新 | GitHub Pages: <a href="https://kelliz-study.github.io/finbid-dashboard/" style="color:#0f3460;">kelliz-study.github.io/finbid-dashboard/</a></p>
         </div>
     </div>
 
@@ -1446,15 +1761,32 @@
             // Filter sections
             const sections = document.querySelectorAll('.section[data-type]');
             const urgentCards = document.querySelectorAll('.urgent-card[data-type]');
+            const renewalSection = document.getElementById('renewal-section');
+            const specialSection = document.getElementById('special-section');
+            const urgentSection = document.getElementById('urgent-section');
 
             if (type === 'all') {
                 sections.forEach(s => s.style.display = 'block');
                 urgentCards.forEach(c => c.style.display = 'block');
-                document.querySelector('.urgent-section').style.display = 'block';
+                urgentSection.style.display = 'block';
+                renewalSection.style.display = 'block';
+                specialSection.style.display = 'block';
+            } else if (type === 'renewal') {
+                sections.forEach(s => s.style.display = 'none');
+                urgentSection.style.display = 'none';
+                specialSection.style.display = 'none';
+                renewalSection.style.display = 'block';
+            } else if (type === 'special') {
+                sections.forEach(s => s.style.display = 'none');
+                urgentSection.style.display = 'none';
+                renewalSection.style.display = 'none';
+                specialSection.style.display = 'block';
             } else {
                 sections.forEach(s => {
                     s.style.display = s.dataset.type === type ? 'block' : 'none';
                 });
+                renewalSection.style.display = 'none';
+                specialSection.style.display = 'none';
                 
                 let hasUrgent = false;
                 urgentCards.forEach(c => {
@@ -1465,7 +1797,7 @@
                         c.style.display = 'none';
                     }
                 });
-                document.querySelector('.urgent-section').style.display = hasUrgent ? 'block' : 'none';
+                urgentSection.style.display = hasUrgent ? 'block' : 'none';
             }
         }
     </script>
