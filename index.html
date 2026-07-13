@@ -38,7 +38,6 @@
             min-height: 100vh;
         }
 
-        /* Header */
         .header {
             background: linear-gradient(135deg, #1e3a5f 0%, #0f172a 50%, #1a1a2e 100%);
             border-bottom: 1px solid var(--border);
@@ -102,14 +101,12 @@
             50% { opacity: 0.4; }
         }
 
-        /* Container */
         .container {
             max-width: 1400px;
             margin: 0 auto;
             padding: 24px;
         }
 
-        /* Stats Row */
         .stats-row {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -155,6 +152,13 @@
 
         .stat-card.warning .stat-value {
             background: linear-gradient(135deg, var(--warning), #fbbf24);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-card.success .stat-value {
+            background: linear-gradient(135deg, var(--success), #34d399);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -207,7 +211,6 @@
             color: var(--danger);
         }
 
-        /* Section */
         .section {
             margin-bottom: 32px;
         }
@@ -238,7 +241,6 @@
             font-weight: 600;
         }
 
-        /* Filter Tabs */
         .filter-tabs {
             display: flex;
             gap: 8px;
@@ -268,7 +270,6 @@
             color: white;
         }
 
-        /* Table */
         .table-wrapper {
             overflow-x: auto;
             border-radius: var(--radius);
@@ -337,7 +338,6 @@
             white-space: nowrap;
         }
 
-        /* Badges */
         .badge {
             display: inline-block;
             padding: 3px 10px;
@@ -442,6 +442,12 @@
             border: 1px solid rgba(16,185,129,0.4);
         }
 
+        .badge-new-special {
+            background: rgba(99,102,241,0.2);
+            color: #a5b4fc;
+            border: 1px solid rgba(99,102,241,0.4);
+        }
+
         .row-emergency {
             background: rgba(220,38,38,0.08) !important;
             border-left: 3px solid var(--emergency);
@@ -452,7 +458,6 @@
             border-left: 3px solid var(--danger);
         }
 
-        /* Links */
         .btn-source {
             display: inline-block;
             padding: 3px 10px;
@@ -489,7 +494,6 @@
             cursor: default;
         }
 
-        /* Heatmap / Coverage section */
         .coverage-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
@@ -528,7 +532,6 @@
             color: var(--text-muted);
         }
 
-        /* Footer */
         .footer {
             text-align: center;
             padding: 32px 24px;
@@ -543,7 +546,27 @@
             text-decoration: none;
         }
 
-        /* Responsive */
+        /* Quick Stats */
+        .quick-stats {
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
+            margin-bottom: 16px;
+            padding: 12px 0;
+        }
+
+        .quick-stat {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        .quick-stat strong {
+            color: var(--text);
+        }
+
         @media (max-width: 768px) {
             .header-inner {
                 flex-direction: column;
@@ -567,51 +590,9 @@
                 max-width: 280px;
             }
         }
-
-        /* Tab Content */
-        .tab-content {
-            display: none;
-        }
-        .tab-content.active {
-            display: block;
-        }
-
-        /* Quick Stats Banner */
-        .quick-stats {
-            display: flex;
-            gap: 24px;
-            flex-wrap: wrap;
-            margin-bottom: 16px;
-            padding: 12px 0;
-        }
-
-        .quick-stat {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            font-size: 0.8rem;
-            color: var(--text-secondary);
-        }
-
-        .quick-stat strong {
-            color: var(--text);
-        }
-
-        /* Empty State */
-        .empty-state {
-            text-align: center;
-            padding: 40px;
-            color: var(--text-muted);
-        }
-
-        .empty-state .empty-icon {
-            font-size: 2rem;
-            margin-bottom: 8px;
-        }
     </style>
 </head>
 <body>
-    <!-- Header -->
     <div class="header">
         <div class="header-inner">
             <div class="header-left">
@@ -621,79 +602,79 @@
             <div class="header-right">
                 <div class="update-time">
                     <span class="dot"></span>
-                    数据更新于 2026-07-05
+                    数据更新于 2026-07-13
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Main Content -->
     <div class="container">
-        <!-- Stats Row -->
         <div class="stats-row">
             <div class="stat-card">
                 <div class="stat-label">📊 商机总数</div>
-                <div class="stat-value">41</div>
-                <div class="stat-sub">市场扫描 38 | 存量续签 1 | 专项增购 2</div>
+                <div class="stat-value">47</div>
+                <div class="stat-sub">市场扫描 42 | 存量续签 1 | 新增专项 2 | 新增商机 2</div>
             </div>
             <div class="stat-card danger">
                 <div class="stat-label">🔥 本周截止</div>
-                <div class="stat-value">0</div>
-                <div class="stat-sub">暂无本周截止项目</div>
+                <div class="stat-value">2</div>
+                <div class="stat-sub">中国人民财产保险股份、中国人民保险集团股份</div>
             </div>
             <div class="stat-card warning">
                 <div class="stat-label">🆕 本周新增</div>
-                <div class="stat-value">0</div>
-                <div class="stat-sub">暂无新增</div>
+                <div class="stat-value">6</div>
+                <div class="stat-sub">中国人寿保险股份有限公司、中国邮政储蓄银行股份有限...</div>
             </div>
-            <div class="stat-card">
+            <div class="stat-card success">
                 <div class="stat-label">📈 有效商机</div>
-                <div class="stat-value">16</div>
-                <div class="stat-sub">在招标期内 · 中标6个 · 流/废标2个</div>
+                <div class="stat-value">24</div>
+                <div class="stat-sub">在招标期内 · 中标5个 · 流/废标2个</div>
             </div>
             <div class="stat-card">
                 <div class="stat-label">🏢 覆盖机构</div>
-                <div class="stat-value">31</div>
-                <div class="stat-sub">银行23家 · 保险8家 · 证券/基金/其他</div>
+                <div class="stat-value">42</div>
+                <div class="stat-sub">银行26家 · 保险11家 · 证券/基金/其他</div>
             </div>
-            <div class="stat-card">
-                <div class="stat-label">🔄 存量续签</div>
-                <div class="stat-value">1</div>
-                <div class="stat-sub">需补充真实客户数据</div>
+            <div class="stat-card danger">
+                <div class="stat-label">🔴 极紧急</div>
+                <div class="stat-value">2</div>
+                <div class="stat-sub">7天内截止项目</div>
             </div>
         </div>
 
-        <!-- Urgent Alert Bar -->
         <div class="urgent-bar">
             <span class="urgent-bar-label">⚠️ 紧急提醒</span>
             <div class="urgent-bar-items">
-                <span style="color: var(--text-muted); font-size: 0.8rem;">当前暂无极紧急项目</span>
+                <span class="urgent-tag">人保财险荣昌支公司2026年互联网宣传推广服务项目 <span class="days">1天</span></span>
+<span class="urgent-tag">中国人民保险集团2026年度新媒体运营服务项目 <span class="days">1天</span></span>
+<span class="urgent-tag" style="background:rgba(245,158,11,0.15);border-color:rgba(245,158,11,0.4);color:#fbbf24;">中国人寿保险股份有限公司小红书、B站新媒体品牌合作(2026年)项目 <span class="days" style="color:#f59e0b;">9天</span></span>
+<span class="urgent-tag" style="background:rgba(245,158,11,0.15);border-color:rgba(245,158,11,0.4);color:#fbbf24;">中国邮政储蓄银行股份有限公司山东省分行2026年今日头条、抖音及小红书平台广告投... <span class="days" style="color:#f59e0b;">9天</span></span>
             </div>
         </div>
 
-        <!-- Quick Stats -->
         <div class="quick-stats">
-            <div class="quick-stat">🏦 <strong>23</strong> 家银行</div>
-            <div class="quick-stat">🛡️ <strong>8</strong> 家保险</div>
-            <div class="quick-stat">🏆 <strong>6</strong> 个已中标</div>
-            <div class="quick-stat">📋 行业分布: <strong>银行(24个)、保险(8个)、证券(2个)、其他金融(1个)、基金(1个)、政府/事业单位(1个)、保险（行业协会）(1个)</strong></div>
+            <div class="quick-stat">🏦 <strong>26</strong> 家银行</div>
+            <div class="quick-stat">🛡️ <strong>11</strong> 家保险</div>
+            <div class="quick-stat">🏆 <strong>5</strong> 个已中标</div>
+            <div class="quick-stat">📋 行业分布: <strong>银行(26个)、保险(10个)、证券(2个)、其他金融(1个)、基金(1个)、政府/事业单位(1个)、保险（行业协会）(1个)</strong></div>
         </div>
 
-        <!-- Main Data Section -->
         <div class="section">
             <div class="section-header">
                 <div class="section-title">
                     📋 全部商机列表
-                    <span class="section-count">41</span>
+                    <span class="section-count">47</span>
                 </div>
                 <div class="filter-tabs" id="filterTabs">
-                    <span class="filter-tab active" data-filter="all">全部 (41)</span>
-                    <span class="filter-tab" data-filter="market">市场扫描 (38)</span>
-                    <span class="filter-tab" data-filter="renewal">存量续签 (1)</span>
-                    <span class="filter-tab" data-filter="upsell">新增专项 (2)</span>
+                    <span class="filter-tab active" data-filter="all">全部 (47)</span>
+                    <span class="filter-tab" data-filter="market">市场扫描 (42)</span>
+                    <span class="filter-tab" data-filter="renewal">🔄 存量续签 (1)</span>
+                    <span class="filter-tab" data-filter="upsell">💡 新增专项 (2)</span>
+                    <span class="filter-tab" data-filter="new-special">⭐ 新增商机 (2)</span>
                     <span class="filter-tab" data-filter="bank">🏦 银行</span>
                     <span class="filter-tab" data-filter="insurance">🛡️ 保险</span>
-                    <span class="filter-tab" data-filter="active">✅ 有效商机 (16)</span>
+                    <span class="filter-tab" data-filter="active">✅ 有效商机 (24)</span>
+                    <span class="filter-tab" data-filter="emergency">🔴 紧急 (2)</span>
                 </div>
             </div>
 
@@ -712,7 +693,59 @@
                     </thead>
                     <tbody id="oppTableBody">
 
-                <tr>
+                <tr class="row-emergency" data-category="insurance">
+                    <td class="cell-name">
+                        <div class="project-title">中国人民保险集团2026年度新媒体运营服务项目</div>
+                        <div class="project-note">🔥超级紧急！人保集团总行级项目，7月14日09:30投标截止仅5天！招标文件获取6/30已截止，需已在人保e采平台注册并办理CA。人保体系第5个项目（集团+内蒙古+商洛+荣昌+集团总部），集团级=最高级别</div>
+                    </td>
+                    <td><span class="badge badge-insurance">保险</span><br><small>中国人民保险集团股份有限公司（总行级）</small></td>
+                    <td>未披露（集团级项目）</td>
+                    <td>2026-07-14 (1天)</td>
+                    <td><span class="badge badge-emergency">⚡仅剩1天</span></td>
+                    <td><span class="badge badge-p1">P1</span></td>
+                    <td class="cell-actions"><a href="https://ec.picc.com/cms/default/webfile/ywgg1/20260623/1254113673085976576.html" target="_blank" class="btn-source">源链接</a></td>
+                </tr>
+
+                <tr class="row-emergency" data-category="insurance">
+                    <td class="cell-name">
+                        <div class="project-title">人保财险荣昌支公司2026年互联网宣传推广服务项目</div>
+                        <div class="project-note">⚠️极其紧急！7月14日15:00截止仅5天！人保体系第4个项目。全平台(抖音快手小红书B站微博视频号)内容推广，2年服务期选4家，CPC结算模式。地市级支公司但全平台覆盖</div>
+                    </td>
+                    <td><span class="badge badge-insurance">保险</span><br><small>中国人民财产保险股份有限公司荣昌支公司</small></td>
+                    <td>按点击量结算(CPC模式)</td>
+                    <td>2026-07-14 (1天)</td>
+                    <td><span class="badge badge-emergency">⚡仅剩1天</span></td>
+                    <td><span class="badge badge-p2">P2</span></td>
+                    <td class="cell-actions"><a href="https://www.zbytb.com/s-zb-67515756.html" target="_blank" class="btn-source">源链接</a></td>
+                </tr>
+
+                <tr data-category="new-special">
+                    <td class="cell-name">
+                        <div class="project-title">中国人寿保险股份有限公司小红书、B站新媒体品牌合作(2026年)项目</div>
+                        
+                    </td>
+                    <td><span class="badge badge-new-special">新增商机</span><br><small>中国人寿保险股份有限公司</small></td>
+                    <td>1000万人民币(小红书+B站各500万)</td>
+                    <td>2026-07-22 (9天)</td>
+                    <td><span class="badge badge-warning">9天</span></td>
+                    <td><span class="badge badge-p1">P1</span></td>
+                    <td class="cell-actions"><a href="https://cpmsx.e-chinalife.com:8067/ocps/anncmnt/cms/default/webfile/ywgg1/20260701/1257017300918206464-final.html" target="_blank" class="btn-source">源链接</a></td>
+                </tr>
+
+                <tr data-category="new-special">
+                    <td class="cell-name">
+                        <div class="project-title">中国邮政储蓄银行股份有限公司山东省分行2026年今日头条、抖音及小红书平台广告投放服务</div>
+                        
+                    </td>
+                    <td><span class="badge badge-new-special">新增商机</span><br><small>中国邮政储蓄银行股份有限公司山东省分行</small></td>
+                    <td>100万(含税)</td>
+                    <td>2026-07-22 (9天)</td>
+                    <td><span class="badge badge-warning">9天</span></td>
+                    <td><span class="badge badge-p2">P2</span></td>
+                    <td class="cell-actions"><a href="https://www.chinapost.com.cn/cn/report/2606/7643-1.htm" target="_blank" class="btn-source">源链接</a></td>
+                </tr>
+
+                <tr data-category="bank">
                     <td class="cell-name">
                         <div class="project-title">兴业银行南京分行2026年线上新媒体运营项目</div>
                         
@@ -722,12 +755,10 @@
                     <td>待定（供应商征集阶段）</td>
                     <td><span class="badge badge-secondary">待定</span></td>
                     <td><span class="badge badge-p1">P1</span></td>
-                    <td class="cell-actions">
-                        <a href="https://cg.cib.com.cn/cms/default/webfile/gyszj/20260409/1226949697248165888.html" target="_blank" class="btn-source">源链接</a>
-                    </td>
+                    <td class="cell-actions"><a href="https://cg.cib.com.cn/cms/default/webfile/gyszj/20260409/1226949697248165888.html" target="_blank" class="btn-source">源链接</a></td>
                 </tr>
 
-                <tr>
+                <tr data-category="market-scan">
                     <td class="cell-name">
                         <div class="project-title">中邮理财2026-2027年新媒体年度运营服务采购项目</div>
                         <div class="project-note">基金行业新媒体运营，2年服务期，需确认是否仍在征集阶段</div>
@@ -737,12 +768,10 @@
                     <td>待确认</td>
                     <td><span class="badge badge-secondary">待定</span></td>
                     <td><span class="badge badge-p1">P1</span></td>
-                    <td class="cell-actions">
-                        <a href="https://www.chinapost.com.cn/xhtml1/report/2602/4004-1.htm" target="_blank" class="btn-source">源链接</a>
-                    </td>
+                    <td class="cell-actions"><a href="https://www.chinapost.com.cn/xhtml1/report/2602/4004-1.htm" target="_blank" class="btn-source">源链接</a></td>
                 </tr>
 
-                <tr>
+                <tr data-category="bank">
                     <td class="cell-name">
                         <div class="project-title">中国邮政储蓄银行信用卡中心2026-2027年新兴渠道代运营服务采购项目</div>
                         <div class="project-note">⚠️总行级商机！邮储信用卡中心新兴渠道代运营，资质要求高：需国有大行/股份行总行级抖音或小红书代运营案例，需邮银易采平台注册</div>
@@ -752,12 +781,10 @@
                     <td>待确认</td>
                     <td><span class="badge badge-secondary">待定</span></td>
                     <td><span class="badge badge-p1">P1</span></td>
-                    <td class="cell-actions">
-                        <a href="https://www.chinapost.com.cn/cn/report/2606/3296-1.htm" target="_blank" class="btn-source">源链接</a>
-                    </td>
+                    <td class="cell-actions"><a href="https://www.chinapost.com.cn/cn/report/2606/3296-1.htm" target="_blank" class="btn-source">源链接</a></td>
                 </tr>
 
-                <tr>
+                <tr data-category="bank">
                     <td class="cell-name">
                         <div class="project-title">中国光大银行信用卡中心抖音、小红书、视频号协助运营服务项目（第二次）</div>
                         <div class="project-note">⚠️二次招标！光大信用卡中心抖音+小红书+视频号协助运营，1家供应商，1年总价合同。补充信息：广发银行2026年度自媒体矩阵运营已由广州禾易广告有限公司中标(89.82万)</div>
@@ -767,12 +794,23 @@
                     <td>待确认</td>
                     <td><span class="badge badge-secondary">待定</span></td>
                     <td><span class="badge badge-p1">P1</span></td>
-                    <td class="cell-actions">
-                        <a href="https://www.chinabidding.com/bidDetail/255730717.html" target="_blank" class="btn-source">源链接</a>
-                    </td>
+                    <td class="cell-actions"><a href="https://www.chinabidding.com/bidDetail/255730717.html" target="_blank" class="btn-source">源链接</a></td>
                 </tr>
 
-                <tr>
+                <tr data-category="bank">
+                    <td class="cell-name">
+                        <div class="project-title">中国光大银行2026年新媒体矩阵运营及推广服务项目</div>
+                        <div class="project-note">🔥总行级超级商机！光大银行总行新媒体矩阵运营+直播平台，1年服务期选1家，招标文件获取7/22截止。需抖音巨量引擎综合代理授权，含光银直播全案运营。光大体系第二个总行级项目（与信用卡中心并列）</div>
+                    </td>
+                    <td><span class="badge badge-bank">银行</span><br><small>中国光大银行股份有限公司（总行）</small></td>
+                    <td>未披露（总行级项目）</td>
+                    <td>2026-07-22（招标文件获取截止）</td>
+                    <td><span class="badge badge-secondary">待定</span></td>
+                    <td><span class="badge badge-p1">P1</span></td>
+                    <td class="cell-actions"><a href="https://www.dljczb.com/zhaobiao/show-9076526/" target="_blank" class="btn-source">源链接</a></td>
+                </tr>
+
+                <tr data-category="bank">
                     <td class="cell-name">
                         <div class="project-title">华夏银行2026年自媒体宣传推广服务项目</div>
                         
@@ -782,12 +820,10 @@
                     <td>待定（竞争性磋商阶段）</td>
                     <td><span class="badge badge-secondary">待定</span></td>
                     <td><span class="badge badge-p2">P2</span></td>
-                    <td class="cell-actions">
-                        <a href="https://www.hxb.com.cn/jrhx/hxzx/hxxw/cggg/zbgg/2026/04/136664.shtml" target="_blank" class="btn-source">源链接</a>
-                    </td>
+                    <td class="cell-actions"><a href="https://www.hxb.com.cn/jrhx/hxzx/hxxw/cggg/zbgg/2026/04/136664.shtml" target="_blank" class="btn-source">源链接</a></td>
                 </tr>
 
-                <tr>
+                <tr data-category="bank">
                     <td class="cell-name">
                         <div class="project-title">中信银行文化类新媒体传播合作采购项目</div>
                         
@@ -797,12 +833,10 @@
                     <td>待定</td>
                     <td><span class="badge badge-secondary">待定</span></td>
                     <td><span class="badge badge-p2">P2</span></td>
-                    <td class="cell-actions">
-                        <a href="https://ebid.cfhc.citic/cms/default/webfile/ywgg1/20260120/1198212003399729152.html" target="_blank" class="btn-source">源链接</a>
-                    </td>
+                    <td class="cell-actions"><a href="https://ebid.cfhc.citic/cms/default/webfile/ywgg1/20260120/1198212003399729152.html" target="_blank" class="btn-source">源链接</a></td>
                 </tr>
 
-                <tr>
+                <tr data-category="bank">
                     <td class="cell-name">
                         <div class="project-title">兴业银行深圳分行2026年度品牌宣传视频制作及视频号运营项目</div>
                         
@@ -812,12 +846,10 @@
                     <td>待定（供应商征集阶段）</td>
                     <td><span class="badge badge-secondary">待定</span></td>
                     <td><span class="badge badge-p2">P2</span></td>
-                    <td class="cell-actions">
-                        <a href="https://cg.cib.com.cn/cms/default/webfile/gyszj/20260323/1220759871561924608.html" target="_blank" class="btn-source">源链接</a>
-                    </td>
+                    <td class="cell-actions"><a href="https://cg.cib.com.cn/cms/default/webfile/gyszj/20260323/1220759871561924608.html" target="_blank" class="btn-source">源链接</a></td>
                 </tr>
 
-                <tr>
+                <tr data-category="bank">
                     <td class="cell-name">
                         <div class="project-title">中国邮政储蓄银行安徽省分行2026年手机银行精准投流运营服务采购项目</div>
                         <div class="project-note">95万预算，需等保三级证书，含短视频投流+素材制作</div>
@@ -827,12 +859,10 @@
                     <td>待确认（竞争性磋商）</td>
                     <td><span class="badge badge-secondary">待定</span></td>
                     <td><span class="badge badge-p2">P2</span></td>
-                    <td class="cell-actions">
-                        <a href="https://www.chinapost.com.cn/xhtml1/report/2603/6813-1.htm" target="_blank" class="btn-source">源链接</a>
-                    </td>
+                    <td class="cell-actions"><a href="https://www.chinapost.com.cn/xhtml1/report/2603/6813-1.htm" target="_blank" class="btn-source">源链接</a></td>
                 </tr>
 
-                <tr>
+                <tr data-category="securities">
                     <td class="cell-name">
                         <div class="project-title">长江证券股份有限公司2026年度新媒体渠道推广项目</div>
                         <div class="project-note">4个标包可分别投标，1月5日发布可能已有结果</div>
@@ -842,12 +872,10 @@
                     <td>待确认（1月5日发布招标）</td>
                     <td><span class="badge badge-secondary">待定</span></td>
                     <td><span class="badge badge-p2">P2</span></td>
-                    <td class="cell-actions">
-                        <a href="http://www.hbbidding.com.cn/view/22921.html" target="_blank" class="btn-source">源链接</a>
-                    </td>
+                    <td class="cell-actions"><a href="http://www.hbbidding.com.cn/view/22921.html" target="_blank" class="btn-source">源链接</a></td>
                 </tr>
 
-                <tr>
+                <tr data-category="bank">
                     <td class="cell-name">
                         <div class="project-title">江苏银行股份有限公司2026年电商流量采购项目</div>
                         <div class="project-note">重新招标项目，抖音+小红书双平台流量投放</div>
@@ -857,12 +885,10 @@
                     <td>待确认（重新招标中）</td>
                     <td><span class="badge badge-secondary">待定</span></td>
                     <td><span class="badge badge-p2">P2</span></td>
-                    <td class="cell-actions">
-                        <a href="https://mip.zhaobiao.cn/zb/bidding_v_7eeab23079f7f167a38f098d631b2207.html" target="_blank" class="btn-source">源链接</a>
-                    </td>
+                    <td class="cell-actions"><a href="https://mip.zhaobiao.cn/zb/bidding_v_7eeab23079f7f167a38f098d631b2207.html" target="_blank" class="btn-source">源链接</a></td>
                 </tr>
 
-                <tr>
+                <tr data-category="bank">
                     <td class="cell-name">
                         <div class="project-title">中信银行股份有限公司手机银行资讯内容服务采购项目（二次招标）</div>
                         <div class="project-note">3年框架合同选2家入围，含自媒体内容版权，二次招标，团队门槛高（9人+）</div>
@@ -872,12 +898,10 @@
                     <td>待确认</td>
                     <td><span class="badge badge-secondary">待定</span></td>
                     <td><span class="badge badge-p2">P2</span></td>
-                    <td class="cell-actions">
-                        <a href="https://www.zbytb.com/s-zb-66262201.html" target="_blank" class="btn-source">源链接</a>
-                    </td>
+                    <td class="cell-actions"><a href="https://www.zbytb.com/s-zb-66262201.html" target="_blank" class="btn-source">源链接</a></td>
                 </tr>
 
-                <tr>
+                <tr data-category="bank">
                     <td class="cell-name">
                         <div class="project-title">中国邮政储蓄银行股份有限公司河北省分行2026年度新媒体账号运营服务采购项目</div>
                         <div class="project-note">邮储银行河北分行新媒体运营，招标文件获取6月5-12日（已截止获取），需邮银易采平台注册+CFCA数字证书，等开标时间确认</div>
@@ -887,12 +911,10 @@
                     <td>待确认</td>
                     <td><span class="badge badge-secondary">待定</span></td>
                     <td><span class="badge badge-p2">P2</span></td>
-                    <td class="cell-actions">
-                        <a href="https://www.chinapost.com.cn/cn/report/2606/1927-1.htm" target="_blank" class="btn-source">源链接</a>
-                    </td>
+                    <td class="cell-actions"><a href="https://www.chinapost.com.cn/cn/report/2606/1927-1.htm" target="_blank" class="btn-source">源链接</a></td>
                 </tr>
 
-                <tr>
+                <tr data-category="bank">
                     <td class="cell-name">
                         <div class="project-title">兴业银行2026年度网络、平面、户外、央视媒介广告代理框架项目</div>
                         <div class="project-note">总行级框架项目！含视频号+小红书+抖音+微博+公众号全平台运维，需21家系统重要性银行总部级合作案例，零代理费模式</div>
@@ -902,12 +924,49 @@
                     <td>待确认（供应商征集阶段）</td>
                     <td><span class="badge badge-secondary">待定</span></td>
                     <td><span class="badge badge-p2">P2</span></td>
-                    <td class="cell-actions">
-                        <a href="http://chinabiding.cn/bid/detail?id=242233" target="_blank" class="btn-source">源链接</a>
-                    </td>
+                    <td class="cell-actions"><a href="http://chinabiding.cn/bid/detail?id=242233" target="_blank" class="btn-source">源链接</a></td>
                 </tr>
 
-                <tr>
+                <tr data-category="bank">
+                    <td class="cell-name">
+                        <div class="project-title">重庆银行2026年新媒体运营宣传项目</div>
+                        <div class="project-note">Q3启动期项目！城商行总行级立项，视频号+抖音+小红书三平台+直播≥10场，已通过行长办公会审批列入年度预算</div>
+                    </td>
+                    <td><span class="badge badge-bank">银行</span><br><small>重庆银行股份有限公司</small></td>
+                    <td>已列入2026年预算(预算编码FY20260835)</td>
+                    <td>待确认(公开竞争性磋商阶段)</td>
+                    <td><span class="badge badge-secondary">待定</span></td>
+                    <td><span class="badge badge-p2">P2</span></td>
+                    <td class="cell-actions"><a href="https://www.cqcbank.com/cn/jrch/cgxx/hjjkh/dfed/100641.html" target="_blank" class="btn-source">源链接</a></td>
+                </tr>
+
+                <tr data-category="upsell">
+                    <td class="cell-name">
+                        <div class="project-title">示例银行股份有限公司 新增专项需求-抖音企业号</div>
+                        
+                    </td>
+                    <td><span class="badge badge-upsell">新增专项</span><br><small>示例银行股份有限公司</small></td>
+                    <td>待确认</td>
+                    <td></td>
+                    <td><span class="badge badge-secondary">待定</span></td>
+                    <td><span class="badge badge-p2">P2</span></td>
+                    <td class="cell-actions"><span class="btn-upsell-action">跟进中</span></td>
+                </tr>
+
+                <tr data-category="upsell">
+                    <td class="cell-name">
+                        <div class="project-title">示例银行股份有限公司 新增专项需求-小红书种草</div>
+                        
+                    </td>
+                    <td><span class="badge badge-upsell">新增专项</span><br><small>示例银行股份有限公司</small></td>
+                    <td>待确认</td>
+                    <td></td>
+                    <td><span class="badge badge-secondary">待定</span></td>
+                    <td><span class="badge badge-p2">P2</span></td>
+                    <td class="cell-actions"><span class="btn-upsell-action">跟进中</span></td>
+                </tr>
+
+                <tr data-category="bank">
                     <td class="cell-name">
                         <div class="project-title">邮储银行天津分行2026-2027官方微信视频号及抖音号运营服务采购项目</div>
                         <div class="project-note">已出中标结果：融实(天津)文化传媒有限公司中标，506,000元</div>
@@ -917,12 +976,10 @@
                     <td>已定标</td>
                     <td><span class="badge badge-secondary">待定</span></td>
                     <td><span class="badge badge-p3">P3</span></td>
-                    <td class="cell-actions">
-                        <a href="https://cg.psbc.com/cms/default/webfile/1ywgg2/20260228/1212483893760884736.html" target="_blank" class="btn-source">源链接</a>
-                    </td>
+                    <td class="cell-actions"><a href="https://cg.psbc.com/cms/default/webfile/1ywgg2/20260228/1212483893760884736.html" target="_blank" class="btn-source">源链接</a></td>
                 </tr>
 
-                <tr>
+                <tr data-category="bank">
                     <td class="cell-name">
                         <div class="project-title">交通银行广东省分行2026-2028年度主流新媒体信息流广告项目</div>
                         
@@ -932,12 +989,10 @@
                     <td>未明确</td>
                     <td><span class="badge badge-secondary">待定</span></td>
                     <td><span class="badge badge-p3">P3</span></td>
-                    <td class="cell-actions">
-                        <a href="http://gztpc.com/content/info.html?id=24497" target="_blank" class="btn-source">源链接</a>
-                    </td>
+                    <td class="cell-actions"><a href="http://gztpc.com/content/info.html?id=24497" target="_blank" class="btn-source">源链接</a></td>
                 </tr>
 
-                <tr>
+                <tr data-category="insurance">
                     <td class="cell-name">
                         <div class="project-title">人保财险陕西商洛市分公司2026年网络推广采购项目</div>
                         <div class="project-note">人保财险地市分公司级项目，规模较小，但可为人保体系合作积累案例</div>
@@ -947,398 +1002,321 @@
                     <td>待确认</td>
                     <td><span class="badge badge-secondary">待定</span></td>
                     <td><span class="badge badge-p3">P3</span></td>
-                    <td class="cell-actions">
-                        <a href="https://ec.picc.com/cms/default/webfile/4ywgg1/20260512/1238914747043151872.html" target="_blank" class="btn-source">源链接</a>
-                    </td>
+                    <td class="cell-actions"><a href="https://ec.picc.com/cms/default/webfile/4ywgg1/20260512/1238914747043151872.html" target="_blank" class="btn-source">源链接</a></td>
                 </tr>
 
-                <tr>
+                <tr data-category="bank">
                     <td class="cell-name">
                         <div class="project-title">遂宁银行2026年度全外包短视频平台运营服务项目（第二次）</div>
                         <div class="project-note">城商行级项目，第二次招标，MCN+直播+短视频全外包，7月3日完成采购仅10天！需MCN资源整合能力和直播全案服务能力</div>
                     </td>
                     <td><span class="badge badge-bank">银行</span><br><small>遂宁银行股份有限公司</small></td>
                     <td>未披露</td>
-                    <td>2026-07-03 (2天前)</td>
+                    <td>2026-07-03 (10天前)</td>
                     <td><span class="badge badge-expired">已截止</span></td>
                     <td><span class="badge badge-p2">P2</span></td>
-                    <td class="cell-actions">
-                        <a href="https://www.snccb.com/view.php?aid=2773" target="_blank" class="btn-source">源链接</a>
-                    </td>
+                    <td class="cell-actions"><a href="https://www.snccb.com/view.php?aid=2773" target="_blank" class="btn-source">源链接</a></td>
                 </tr>
 
-                <tr>
+                <tr data-category="bank">
                     <td class="cell-name">
                         <div class="project-title">广发银行股份有限公司2026年官方账号(抖音、快手、B站等平台账号)运营及视频制作服务项目</div>
                         <div class="project-note">⚠️总行级超级商机！广发银行抖音+快手+B站运营+视频制作，6月18日开标！标书获取截止6月12日17:30（已截止），2万保证金，需在广发银行供应商服务平台注册</div>
                     </td>
                     <td><span class="badge badge-bank">银行</span><br><small>广发银行股份有限公司（总行）</small></td>
                     <td>未披露（总行级项目）</td>
-                    <td>2026-06-18 (17天前)</td>
+                    <td>2026-06-18 (25天前)</td>
                     <td><span class="badge badge-expired">已截止</span></td>
                     <td><span class="badge badge-p1">P1</span></td>
-                    <td class="cell-actions">
-                        <a href="https://zjzb.chinaccsscm.cn/zbgg/456866.jhtml" target="_blank" class="btn-source">源链接</a>
-                    </td>
+                    <td class="cell-actions"><a href="https://zjzb.chinaccsscm.cn/zbgg/456866.jhtml" target="_blank" class="btn-source">源链接</a></td>
                 </tr>
 
-                <tr>
+                <tr data-category="bank">
                     <td class="cell-name">
                         <div class="project-title">安顺农村商业银行股份有限公司抖音、微信视频号官方账号代运营服务采购项目 ❌废标</div>
                         <div class="project-note">废标！因对采购需求进行重大变更终止采购，可能重新招标</div>
                     </td>
                     <td><span class="badge badge-bank">银行</span><br><small>安顺农村商业银行股份有限公司</small></td>
                     <td>20万元</td>
-                    <td>2026-06-18 (17天前)</td>
+                    <td>2026-06-18 (25天前)</td>
                     <td><span class="badge badge-expired">已截止</span></td>
                     <td><span class="badge badge-p3">P3</span></td>
-                    <td class="cell-actions">
-                        <a href="https://ggzy.guizhou.gov.cn/tradeInfo/detailHtml?metaId=1225330892154949632" target="_blank" class="btn-source">源链接</a>
-                    </td>
+                    <td class="cell-actions"><a href="https://ggzy.guizhou.gov.cn/tradeInfo/detailHtml?metaId=1225330892154949632" target="_blank" class="btn-source">源链接</a></td>
                 </tr>
 
-                <tr>
+                <tr data-category="market-scan">
                     <td class="cell-name">
                         <div class="project-title">广西新媒体平台全年宣传推广项目（2026年小红书、快手平台年度宣传推广）</div>
                         <div class="project-note">政府事业单位项目，80万预算，小红书+快手双平台年度运营，6月16日截止仅3天！</div>
                     </td>
                     <td><span class="badge badge-secondary">政府/事业单位</span><br><small>广西壮族自治区相关单位</small></td>
                     <td>80万元</td>
-                    <td>2026-06-16 (19天前)</td>
+                    <td>2026-06-16 (27天前)</td>
                     <td><span class="badge badge-expired">已截止</span></td>
                     <td><span class="badge badge-p2">P2</span></td>
-                    <td class="cell-actions">
-                        <a href="https://www.ccgp.gov.cn/cggg/dfgg/gkzb/202605/t20260526_26634707.htm" target="_blank" class="btn-source">源链接</a>
-                    </td>
+                    <td class="cell-actions"><a href="https://www.ccgp.gov.cn/cggg/dfgg/gkzb/202605/t20260526_26634707.htm" target="_blank" class="btn-source">源链接</a></td>
                 </tr>
 
-                <tr>
+                <tr data-category="insurance">
                     <td class="cell-name">
                         <div class="project-title">中国保险行业协会公众传播相关采购项目 🏆已中标</div>
                         <div class="project-note">行业协会级项目！新华网股份有限公司中标，成交金额501,600元，88.33分</div>
                     </td>
                     <td><span class="badge badge-insurance">保险</span><br><small>中国保险行业协会</small></td>
                     <td>80万元（新媒体代运营45万+舆情监测35万）</td>
-                    <td>2026-06-15 (20天前)</td>
+                    <td>2026-06-15 (28天前)</td>
                     <td><span class="badge badge-expired">已截止</span></td>
                     <td><span class="badge badge-p1">P1</span></td>
-                    <td class="cell-actions">
-                        <a href="https://www.iachina.cn/art/2026/6/2/art_24_109061.html" target="_blank" class="btn-source">源链接</a>
-                    </td>
+                    <td class="cell-actions"><a href="https://www.iachina.cn/art/2026/6/2/art_24_109061.html" target="_blank" class="btn-source">源链接</a></td>
                 </tr>
 
-                <tr>
+                <tr data-category="insurance">
                     <td class="cell-name">
                         <div class="project-title">新华人寿保险股份有限公司2026年度头部自媒体合作项目</div>
                         <div class="project-note">新华保险头部自媒体合作，6月12日已截止，等待开标结果</div>
                     </td>
                     <td><span class="badge badge-insurance">保险</span><br><small>新华人寿保险股份有限公司</small></td>
                     <td>未披露</td>
-                    <td>2026-06-12 (23天前)</td>
+                    <td>2026-06-12 (31天前)</td>
                     <td><span class="badge badge-expired">已截止</span></td>
                     <td><span class="badge badge-p1">P1</span></td>
-                    <td class="cell-actions">
-                        <a href="https://www.zbytb.com/s-zb-66297073.html" target="_blank" class="btn-source">源链接</a>
-                    </td>
+                    <td class="cell-actions"><a href="https://www.zbytb.com/s-zb-66297073.html" target="_blank" class="btn-source">源链接</a></td>
                 </tr>
 
-                <tr>
+                <tr data-category="bank">
                     <td class="cell-name">
                         <div class="project-title">中国邮政储蓄银行黑龙江省分行2026年新媒体运营宣传服务采购项目(第2次招标)</div>
                         <div class="project-note">第2次招标！特殊资质要求：需拥有自主AI内容生产SaaS平台+软著证书，6月11日已截止，等待开标结果</div>
                     </td>
                     <td><span class="badge badge-bank">银行</span><br><small>中国邮政储蓄银行股份有限公司黑龙江省分行</small></td>
                     <td>未披露</td>
-                    <td>2026-06-11 (24天前)</td>
+                    <td>2026-06-11 (32天前)</td>
                     <td><span class="badge badge-expired">已截止</span></td>
                     <td><span class="badge badge-p2">P2</span></td>
-                    <td class="cell-actions">
-                        <a href="https://www.chinapost.com.cn/html1/report/2605/4616-1.htm" target="_blank" class="btn-source">源链接</a>
-                    </td>
+                    <td class="cell-actions"><a href="https://www.chinapost.com.cn/html1/report/2605/4616-1.htm" target="_blank" class="btn-source">源链接</a></td>
                 </tr>
 
-                <tr>
+                <tr data-category="bank">
                     <td class="cell-name">
                         <div class="project-title">交通银行上海市分行个人手机银行睡眠客户公域促活项目</div>
                         <div class="project-note">3年框架合同选2家供应商，6月11日已截止，等待开标结果</div>
                     </td>
                     <td><span class="badge badge-bank">银行</span><br><small>交通银行股份有限公司上海市分行</small></td>
                     <td>未披露</td>
-                    <td>2026-06-11 (24天前)</td>
+                    <td>2026-06-11 (32天前)</td>
                     <td><span class="badge badge-expired">已截止</span></td>
                     <td><span class="badge badge-p2">P2</span></td>
-                    <td class="cell-actions">
-                        <a href="https://www.zbytb.com/s-zb-66296205.html" target="_blank" class="btn-source">源链接</a>
-                    </td>
+                    <td class="cell-actions"><a href="https://www.zbytb.com/s-zb-66296205.html" target="_blank" class="btn-source">源链接</a></td>
                 </tr>
 
-                <tr>
+                <tr data-category="market-scan">
                     <td class="cell-name">
                         <div class="project-title">中国邮政广西分公司2026年代理金融视频号运营服务采购项目(重)</div>
                         <div class="project-note">原项目流标后重新招标，预算120万，6月8日已截止，等待开标结果</div>
                     </td>
                     <td><span class="badge badge-secondary">其他金融</span><br><small>中国邮政集团有限公司广西壮族自治区分公司</small></td>
                     <td>120万元</td>
-                    <td>2026-06-08 (27天前)</td>
+                    <td>2026-06-08 (35天前)</td>
                     <td><span class="badge badge-expired">已截止</span></td>
                     <td><span class="badge badge-p1">P1</span></td>
-                    <td class="cell-actions">
-                        <a href="http://www.dav01.com/tender/2026/05/t1079373.html" target="_blank" class="btn-source">源链接</a>
-                    </td>
+                    <td class="cell-actions"><a href="http://www.dav01.com/tender/2026/05/t1079373.html" target="_blank" class="btn-source">源链接</a></td>
                 </tr>
 
-                <tr>
+                <tr data-category="bank">
                     <td class="cell-name">
                         <div class="project-title">中国建设银行股份有限公司"中国建设银行"抖音号线上运营服务采购项目 🏆已中标</div>
                         <div class="project-note">总行级超级商机！建设银行抖音号运营，6月5日征集截止，美偲互动广告(北京)有限公司中标142.89万元</div>
                     </td>
                     <td><span class="badge badge-bank">银行</span><br><small>中国建设银行股份有限公司</small></td>
                     <td>未披露（总行级项目）</td>
-                    <td>2026-06-05 (30天前)</td>
+                    <td>2026-06-05 (38天前)</td>
                     <td><span class="badge badge-expired">已截止</span></td>
                     <td><span class="badge badge-p1">P1</span></td>
-                    <td class="cell-actions">
-                        <a href="https://www.ebnew.com/businessShow/708428892.html" target="_blank" class="btn-source">源链接</a>
-                    </td>
+                    <td class="cell-actions"><a href="https://www.ebnew.com/businessShow/708428892.html" target="_blank" class="btn-source">源链接</a></td>
                 </tr>
 
-                <tr>
+                <tr data-category="bank">
                     <td class="cell-name">
                         <div class="project-title">中国光大银行上海分行2026年零售新营销平台客户经营及官方微信公众平台运维项目</div>
                         <div class="project-note">重招项目！第一次开标因不足3家投标人失败，107万预算，6月4日已截止，需跟踪重招开标结果</div>
                     </td>
                     <td><span class="badge badge-bank">银行</span><br><small>中国光大银行股份有限公司上海分行</small></td>
                     <td>107万元</td>
-                    <td>2026-06-04 (31天前)</td>
+                    <td>2026-06-04 (39天前)</td>
                     <td><span class="badge badge-expired">已截止</span></td>
                     <td><span class="badge badge-p1">P1</span></td>
-                    <td class="cell-actions">
-                        <a href="http://www.gdtzb.com/g-zb-44614108.html" target="_blank" class="btn-source">源链接</a>
-                    </td>
+                    <td class="cell-actions"><a href="http://www.gdtzb.com/g-zb-44614108.html" target="_blank" class="btn-source">源链接</a></td>
                 </tr>
 
-                <tr>
+                <tr data-category="bank">
                     <td class="cell-name">
                         <div class="project-title">四川银行2026年视频号年度服务采购项目 ⚠️流标</div>
                         <div class="project-note">204万预算选3家供应商，已流标！因递交响应文件供应商少于5家，可能重新招标，需关注后续动态</div>
                     </td>
                     <td><span class="badge badge-bank">银行</span><br><small>四川银行股份有限公司</small></td>
                     <td>204万元（含税）</td>
-                    <td>2026-06-03 (32天前)</td>
+                    <td>2026-06-03 (40天前)</td>
                     <td><span class="badge badge-expired">已截止</span></td>
                     <td><span class="badge badge-p2">P2</span></td>
-                    <td class="cell-actions">
-                        <a href="https://scbank.cn/cn/col322/6793478.html" target="_blank" class="btn-source">源链接</a>
-                    </td>
+                    <td class="cell-actions"><a href="https://scbank.cn/cn/col322/6793478.html" target="_blank" class="btn-source">源链接</a></td>
                 </tr>
 
-                <tr>
+                <tr data-category="insurance">
                     <td class="cell-name">
                         <div class="project-title">内蒙古人保财险公众号、视频号运营服务采购项目</div>
                         <div class="project-note">2年框架合同，已出中标候选人：第一-杭州易有料科技有限公司(279,600元/年)</div>
                     </td>
                     <td><span class="badge badge-insurance">保险</span><br><small>中国人民财产保险股份有限公司内蒙古自治区分公司</small></td>
                     <td>未披露</td>
-                    <td>2026-05-28 (38天前)</td>
+                    <td>2026-05-28 (46天前)</td>
                     <td><span class="badge badge-expired">已截止</span></td>
                     <td><span class="badge badge-p1">P1</span></td>
-                    <td class="cell-actions">
-                        <a href="https://ec.picc.com/cms/default/webfile/4ywgg1/20260507/1237075453726949376.html" target="_blank" class="btn-source">源链接</a>
-                    </td>
+                    <td class="cell-actions"><a href="https://ec.picc.com/cms/default/webfile/4ywgg1/20260507/1237075453726949376.html" target="_blank" class="btn-source">源链接</a></td>
                 </tr>
 
-                <tr>
+                <tr data-category="insurance">
                     <td class="cell-name">
                         <div class="project-title">中国太平洋保险（集团）股份有限公司太保家园2026年新媒体(小红书)平台搭建及内容制作项目 🏆已中标</div>
                         
                     </td>
                     <td><span class="badge badge-insurance">保险</span><br><small>中国太平洋保险（集团）股份有限公司</small></td>
                     <td>未披露</td>
-                    <td>2026-05-20 (46天前)</td>
+                    <td>2026-05-20 (54天前)</td>
                     <td><span class="badge badge-expired">已截止</span></td>
                     <td><span class="badge badge-p1">P1</span></td>
-                    <td class="cell-actions">
-                        <a href="https://purchase.cpic.com.cn/cms/channel/ywgg1/2000500.htm" target="_blank" class="btn-source">源链接</a>
-                    </td>
+                    <td class="cell-actions"><a href="https://purchase.cpic.com.cn/cms/channel/ywgg1/2000500.htm" target="_blank" class="btn-source">源链接</a></td>
                 </tr>
 
-                <tr>
+                <tr data-category="bank">
                     <td class="cell-name">
                         <div class="project-title">广州银行2026-2028年微信视频号、抖音号代运营服务采购项目</div>
                         <div class="project-note">3年框架合同，1家主选+1家备选，已开标</div>
                     </td>
                     <td><span class="badge badge-bank">银行</span><br><small>广州银行股份有限公司</small></td>
                     <td>未披露</td>
-                    <td>2026-05-20 (46天前)</td>
+                    <td>2026-05-20 (54天前)</td>
                     <td><span class="badge badge-expired">已截止</span></td>
                     <td><span class="badge badge-p1">P1</span></td>
-                    <td class="cell-actions">
-                        <a href="http://www.gzcb.com.cn/jrgy/xwgg/zygg/cggg/202604/t20260428_71710.html" target="_blank" class="btn-source">源链接</a>
-                    </td>
+                    <td class="cell-actions"><a href="http://www.gzcb.com.cn/jrgy/xwgg/zygg/cggg/202604/t20260428_71710.html" target="_blank" class="btn-source">源链接</a></td>
                 </tr>
 
-                <tr>
+                <tr data-category="bank">
                     <td class="cell-name">
                         <div class="project-title">恒丰银行合肥分行2026年度新媒体账号运营维护服务采购项目</div>
                         <div class="project-note">需《广播电视节目制作经营许可证》特殊资质，已截止</div>
                     </td>
                     <td><span class="badge badge-bank">银行</span><br><small>恒丰银行股份有限公司合肥分行</small></td>
                     <td>未披露（固定单价据实结算）</td>
-                    <td>2026-05-20 (46天前)</td>
+                    <td>2026-05-20 (54天前)</td>
                     <td><span class="badge badge-expired">已截止</span></td>
                     <td><span class="badge badge-p1">P1</span></td>
-                    <td class="cell-actions">
-                        <a href="https://www.hfbank.com.cn/gyhf/cgpt/fscg/cggg/" target="_blank" class="btn-source">源链接</a>
-                    </td>
+                    <td class="cell-actions"><a href="https://www.hfbank.com.cn/gyhf/cgpt/fscg/cggg/" target="_blank" class="btn-source">源链接</a></td>
                 </tr>
 
-                <tr>
+                <tr data-category="insurance">
                     <td class="cell-name">
                         <div class="project-title">太平财产保险有限公司北京分公司2026年全媒体账号代运营服务采购</div>
                         <div class="project-note">超级大单2500万！已截止，关注评审/中标结果</div>
                     </td>
                     <td><span class="badge badge-insurance">保险</span><br><small>太平财产保险有限公司北京分公司</small></td>
                     <td>约2500万元（含税）</td>
-                    <td>2026-05-15 (51天前)</td>
+                    <td>2026-05-15 (59天前)</td>
                     <td><span class="badge badge-expired">已截止</span></td>
                     <td><span class="badge badge-p1">P1</span></td>
-                    <td class="cell-actions">
-                        <a href="https://www.chengezhao.com/cms/post/b/2/b2a9fb62aff590e5980a3fae9dfd30e6/" target="_blank" class="btn-source">源链接</a>
-                    </td>
+                    <td class="cell-actions"><a href="https://www.chengezhao.com/cms/post/b/2/b2a9fb62aff590e5980a3fae9dfd30e6/" target="_blank" class="btn-source">源链接</a></td>
                 </tr>
 
-                <tr>
+                <tr data-category="insurance">
                     <td class="cell-name">
                         <div class="project-title">鼎和财产保险股份有限公司2026-2027年新媒体平台宣传框架服务公开招标项目 🏆已中标</div>
                         
                     </td>
                     <td><span class="badge badge-insurance">保险</span><br><small>鼎和财产保险股份有限公司</small></td>
                     <td>200万元</td>
-                    <td>2026-05-14 (52天前)</td>
+                    <td>2026-05-14 (60天前)</td>
                     <td><span class="badge badge-expired">已截止</span></td>
                     <td><span class="badge badge-p1">P1</span></td>
-                    <td class="cell-actions">
-                        <a href="https://www.bidding.csg.cn/zbgg/1200427871.jhtml" target="_blank" class="btn-source">源链接</a>
-                    </td>
+                    <td class="cell-actions"><a href="https://www.bidding.csg.cn/zbgg/1200427871.jhtml" target="_blank" class="btn-source">源链接</a></td>
                 </tr>
 
-                <tr>
+                <tr data-category="securities">
                     <td class="cell-name">
                         <div class="project-title">中金财富新媒体投放服务采购项目 🏆已中标</div>
                         <div class="project-note">超级大单6000万！4家中标已出结果，2年服务期</div>
                     </td>
                     <td><span class="badge badge-securities">证券</span><br><small>中国中金财富证券有限公司</small></td>
                     <td>约6000万元</td>
-                    <td>2026-05-14 (52天前)</td>
+                    <td>2026-05-14 (60天前)</td>
                     <td><span class="badge badge-expired">已截止</span></td>
                     <td><span class="badge badge-p1">P1</span></td>
-                    <td class="cell-actions">
-                        <a href="https://www.chengezhao.com/cms/post/1/a/1ac9fa791616c274e7826eef86c72033/" target="_blank" class="btn-source">源链接</a>
-                    </td>
+                    <td class="cell-actions"><a href="https://www.chengezhao.com/cms/post/1/a/1ac9fa791616c274e7826eef86c72033/" target="_blank" class="btn-source">源链接</a></td>
                 </tr>
 
-                <tr>
+                <tr data-category="bank">
                     <td class="cell-name">
                         <div class="project-title">恒丰银行西安分行2026年网络媒体广告投放供应商入围项目</div>
                         
                     </td>
                     <td><span class="badge badge-bank">银行</span><br><small>恒丰银行西安分行</small></td>
                     <td>未披露</td>
-                    <td>2026-04-28 (68天前)</td>
+                    <td>2026-04-28 (76天前)</td>
                     <td><span class="badge badge-expired">已截止</span></td>
                     <td><span class="badge badge-p3">P3</span></td>
-                    <td class="cell-actions">
-                        <a href="https://www.chinamae.com/purchases/49db88c7dbe1721a66992dbf37770483.html" target="_blank" class="btn-source">源链接</a>
-                    </td>
+                    <td class="cell-actions"><a href="https://www.chinamae.com/purchases/49db88c7dbe1721a66992dbf37770483.html" target="_blank" class="btn-source">源链接</a></td>
                 </tr>
 
-                <tr>
+                <tr data-category="insurance">
                     <td class="cell-name">
-                        <div class="project-title">中国太平洋保险（集团）股份有限公司2026年中国太平洋保险新媒体传播抖音和小红书活动项目 🏆已中标</div>
+                        <div class="project-title">中国太平洋保险（集团）股份有限公司2026年中国太平洋保险新媒体传播抖音和小红书活动项目</div>
                         
                     </td>
                     <td><span class="badge badge-insurance">保险</span><br><small>中国太平洋保险（集团）股份有限公司</small></td>
                     <td>未披露</td>
-                    <td>2026-04-17 (79天前)</td>
+                    <td>2026-04-17 (87天前)</td>
                     <td><span class="badge badge-expired">已截止</span></td>
                     <td><span class="badge badge-p1">P1</span></td>
-                    <td class="cell-actions">
-                        <a href="https://purchase.cpic.com.cn/cms/channel/ywgg1/2000415.htm" target="_blank" class="btn-source">源链接</a>
-                    </td>
+                    <td class="cell-actions"><a href="https://purchase.cpic.com.cn/cms/channel/ywgg1/2000415.htm" target="_blank" class="btn-source">源链接</a></td>
                 </tr>
 
-                <tr>
+                <tr data-category="renewal">
+                    <td class="cell-name">
+                        <div class="project-title">示例银行股份有限公司 2025年度新媒体代运营服务 续签</div>
+                        
+                    </td>
+                    <td><span class="badge badge-renewal">存量续签</span><br><small>示例银行股份有限公司</small></td>
+                    <td>¥800,000</td>
+                    <td>2026-01-31 (163天前)</td>
+                    <td><span class="badge badge-expired">已截止</span></td>
+                    <td><span class="badge badge-p0">P0</span></td>
+                    <td class="cell-actions"><span class="btn-renewal-action">待续签</span></td>
+                </tr>
+
+                <tr data-category="insurance">
                     <td class="cell-name">
                         <div class="project-title">泰康人寿2026年财富季企划营销项目</div>
                         
                     </td>
                     <td><span class="badge badge-insurance">保险</span><br><small>泰康人寿保险股份有限公司</small></td>
                     <td>未披露</td>
-                    <td>2025-08-29 (310天前)</td>
+                    <td>2025-08-29 (318天前)</td>
                     <td><span class="badge badge-expired">已截止</span></td>
                     <td><span class="badge badge-p2">P2</span></td>
-                    <td class="cell-actions">
-                        <a href="https://tip.taikanglife.com/gyszj/12742.jhtml" target="_blank" class="btn-source">源链接</a>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td class="cell-name">
-                        <div class="project-title">示例银行股份有限公司 2025年度新媒体代运营服务 续签</div>
-                    </td>
-                    <td><span class="badge badge-renewal">存量续签</span><br><small>示例银行股份有限公司</small></td>
-                    <td>¥800,000</td>
-                    <td>2026-01-31</td>
-                    <td><span class="badge badge-expired">已截止</span></td>
-                    <td><span class="badge badge-p0">P0</span></td>
-                    <td class="cell-actions">
-                        <span class="btn-renewal-action">待续签</span>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td class="cell-name">
-                        <div class="project-title">示例银行股份有限公司 新增专项需求-抖音企业号</div>
-                    </td>
-                    <td><span class="badge badge-upsell">新增专项</span><br><small>示例银行股份有限公司</small></td>
-                    <td>待确认</td>
-                    <td>待定</td>
-                    <td><span class="badge badge-secondary">待定</span></td>
-                    <td><span class="badge badge-p2">P2</span></td>
-                    <td class="cell-actions">
-                        <span class="btn-upsell-action">跟进中</span>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td class="cell-name">
-                        <div class="project-title">示例银行股份有限公司 新增专项需求-小红书种草</div>
-                    </td>
-                    <td><span class="badge badge-upsell">新增专项</span><br><small>示例银行股份有限公司</small></td>
-                    <td>待确认</td>
-                    <td>待定</td>
-                    <td><span class="badge badge-secondary">待定</span></td>
-                    <td><span class="badge badge-p2">P2</span></td>
-                    <td class="cell-actions">
-                        <span class="btn-upsell-action">跟进中</span>
-                    </td>
+                    <td class="cell-actions"><a href="https://tip.taikanglife.com/gyszj/12742.jhtml" target="_blank" class="btn-source">源链接</a></td>
                 </tr>
                     </tbody>
                 </table>
             </div>
         </div>
 
-        <!-- Institution Coverage Section -->
         <div class="section">
             <div class="section-title" style="margin-bottom: 16px;">
                 🗺️ 机构覆盖热力图
-                <span class="section-count">31</span>
+                <span class="section-count">42</span>
             </div>
             <div class="coverage-grid" id="coverageGrid">
             </div>
         </div>
 
-        <!-- Footer -->
         <div class="footer">
             <p>Lobster CRM · 金融机构数字营销招投标商机监控系统</p>
             <p style="margin-top: 4px;">数据来源：公开招标平台 · 更新频率：每日自动 | <a href="https://kelliz-study.github.io/finbid-dashboard/" target="_blank">GitHub Pages</a></p>
@@ -1352,45 +1330,48 @@
             tab.addEventListener('click', function() {
                 document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
                 this.classList.add('active');
-                
+
                 const filter = this.dataset.filter;
                 const rows = document.querySelectorAll('#oppTableBody tr');
-                
+
                 rows.forEach(row => {
+                    const cat = row.dataset.category || 'market-scan';
                     const cells = row.querySelectorAll('td');
-                    if (cells.length < 2) return;
-                    
-                    const typeCell = cells[1].textContent;
-                    const priorityCell = cells[5].textContent;
-                    const urgencyCell = cells[4].textContent;
-                    
+                    const urgencyCell = cells.length > 4 ? cells[4].textContent : '';
+
                     let show = false;
                     switch(filter) {
                         case 'all':
                             show = true;
                             break;
                         case 'market':
-                            show = !typeCell.includes('存量续签') && !typeCell.includes('新增专项');
+                            show = (cat === 'market-scan' || cat === 'bank' || cat === 'insurance' || cat === 'securities');
                             break;
                         case 'renewal':
-                            show = typeCell.includes('存量续签');
+                            show = (cat === 'renewal');
                             break;
                         case 'upsell':
-                            show = typeCell.includes('新增专项');
+                            show = (cat === 'upsell');
+                            break;
+                        case 'new-special':
+                            show = (cat === 'new-special');
                             break;
                         case 'bank':
-                            show = typeCell.includes('银行') && !typeCell.includes('存量续签') && !typeCell.includes('新增专项');
+                            show = (cat === 'bank');
                             break;
                         case 'insurance':
-                            show = typeCell.includes('保险');
+                            show = (cat === 'insurance');
                             break;
                         case 'active':
                             show = !urgencyCell.includes('已截止');
                             break;
+                        case 'emergency':
+                            show = (urgencyCell.includes('⚡') || urgencyCell.includes('🔥') || urgencyCell.includes('仅剩'));
+                            break;
                         default:
                             show = true;
                     }
-                    
+
                     row.style.display = show ? '' : 'none';
                 });
             });
@@ -1398,21 +1379,11 @@
 
         // Build coverage grid
         (function() {
-            const coverageData = {"中国太平洋保险（集团）股份有限公司": "保险", "中国邮政集团有限公司广西壮族自治区分公司": "其他金融", "鼎和财产保险股份有限公司": "保险", "中国邮政储蓄银行天津分行": "银行", "泰康人寿保险股份有限公司": "保险", "恒丰银行西安分行": "银行", "交通银行股份有限公司广东省分行": "银行", "兴业银行股份有限公司南京分行": "银行", "华夏银行股份有限公司": "银行", "广州银行股份有限公司": "银行", "中信银行股份有限公司": "银行", "兴业银行股份有限公司深圳分行": "银行", "中国邮政储蓄银行股份有限公司黑龙江省分行": "银行", "恒丰银行股份有限公司合肥分行": "银行", "中国中金财富证券有限公司": "证券", "中邮理财有限责任公司": "基金", "中国邮政储蓄银行股份有限公司安徽省分行": "银行", "长江证券股份有限公司": "证券", "新华人寿保险股份有限公司": "保险", "中国光大银行股份有限公司上海分行": "银行", "江苏银行股份有限公司": "银行", "中国人民财产保险股份有限公司内蒙古自治区分公司": "保险", "交通银行股份有限公司上海市分行": "银行", "太平财产保险有限公司北京分公司": "保险", "中国建设银行股份有限公司": "银行", "广西壮族自治区相关单位": "政府/事业单位", "中国人民财产保险股份有限公司商洛市分公司": "保险", "中国保险行业协会": "保险（行业协会）", "广发银行股份有限公司（总行）": "银行", "中国邮政储蓄银行股份有限公司信用卡中心": "银行", "中国光大银行股份有限公司信用卡中心": "银行", "中国邮政储蓄银行股份有限公司河北省分行": "银行", "安顺农村商业银行股份有限公司": "银行", "遂宁银行股份有限公司": "银行", "四川银行股份有限公司": "银行", "兴业银行股份有限公司（总行）": "银行"};
-            
-            // Aggregate by institution
-            const instMap = {};
-            for (const [name, bidderType] of Object.entries(coverageData)) {
-                const key = name;
-                if (!instMap[key]) {
-                    instMap[key] = { type: bidderType, count: 0 };
-                }
-                instMap[key].count++;
-            }
-            
+            const coverageData = {"中国太平洋保险（集团）股份有限公司": {"type": "保险", "count": 2}, "中国邮政集团有限公司广西壮族自治区分公司": {"type": "其他金融", "count": 1}, "鼎和财产保险股份有限公司": {"type": "保险", "count": 1}, "中国邮政储蓄银行天津分行": {"type": "银行", "count": 1}, "泰康人寿保险股份有限公司": {"type": "保险", "count": 1}, "恒丰银行西安分行": {"type": "银行", "count": 1}, "交通银行股份有限公司广东省分行": {"type": "银行", "count": 1}, "兴业银行股份有限公司南京分行": {"type": "银行", "count": 1}, "华夏银行股份有限公司": {"type": "银行", "count": 1}, "广州银行股份有限公司": {"type": "银行", "count": 1}, "中信银行股份有限公司": {"type": "银行", "count": 2}, "兴业银行股份有限公司深圳分行": {"type": "银行", "count": 1}, "中国邮政储蓄银行股份有限公司黑龙江省分行": {"type": "银行", "count": 1}, "恒丰银行股份有限公司合肥分行": {"type": "银行", "count": 1}, "中国中金财富证券有限公司": {"type": "证券", "count": 1}, "中邮理财有限责任公司": {"type": "基金", "count": 1}, "中国邮政储蓄银行股份有限公司安徽省分行": {"type": "银行", "count": 1}, "长江证券股份有限公司": {"type": "证券", "count": 1}, "新华人寿保险股份有限公司": {"type": "保险", "count": 1}, "中国光大银行股份有限公司上海分行": {"type": "银行", "count": 1}, "江苏银行股份有限公司": {"type": "银行", "count": 1}, "中国人民财产保险股份有限公司内蒙古自治区分公司": {"type": "保险", "count": 1}, "交通银行股份有限公司上海市分行": {"type": "银行", "count": 1}, "太平财产保险有限公司北京分公司": {"type": "保险", "count": 1}, "中国建设银行股份有限公司": {"type": "银行", "count": 1}, "广西壮族自治区相关单位": {"type": "政府/事业单位", "count": 1}, "中国人民财产保险股份有限公司商洛市分公司": {"type": "保险", "count": 1}, "中国保险行业协会": {"type": "保险（行业协会）", "count": 1}, "广发银行股份有限公司（总行）": {"type": "银行", "count": 1}, "中国邮政储蓄银行股份有限公司信用卡中心": {"type": "银行", "count": 1}, "中国光大银行股份有限公司信用卡中心": {"type": "银行", "count": 1}, "中国邮政储蓄银行股份有限公司河北省分行": {"type": "银行", "count": 1}, "安顺农村商业银行股份有限公司": {"type": "银行", "count": 1}, "遂宁银行股份有限公司": {"type": "银行", "count": 1}, "四川银行股份有限公司": {"type": "银行", "count": 1}, "兴业银行股份有限公司（总行）": {"type": "银行", "count": 1}, "重庆银行股份有限公司": {"type": "银行", "count": 1}, "中国光大银行股份有限公司（总行）": {"type": "银行", "count": 1}, "中国人民财产保险股份有限公司荣昌支公司": {"type": "保险", "count": 1}, "中国人民保险集团股份有限公司（总行级）": {"type": "保险", "count": 1}, "中国人寿保险股份有限公司": {"type": "保险", "count": 1}, "中国邮政储蓄银行股份有限公司山东省分行": {"type": "银行", "count": 1}};
+
             const grid = document.getElementById('coverageGrid');
-            const sorted = Object.entries(instMap).sort((a, b) => b[1].count - a[1].count);
-            
+            const sorted = Object.entries(coverageData).sort((a, b) => b[1].count - a[1].count);
+
             const typeIcons = {
                 '银行': '🏦',
                 '保险': '🛡️',
@@ -1422,7 +1393,7 @@
                 '其他金融': '🏢',
                 '政府/事业单位': '🏛️'
             };
-            
+
             sorted.forEach(([name, info]) => {
                 const item = document.createElement('div');
                 item.className = 'coverage-item';
